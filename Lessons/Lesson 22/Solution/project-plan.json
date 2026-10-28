@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": "Sealed feedback lab",
+    "user": "A Web2 engineer learning a privacy-preserving commit and reveal flow.",
+    "problem": "Collect a bounded rating without publishing it before the reveal phase.",
+    "firstSlice": "One participant commits, reveals once, and a public read confirms the rating.",
+    "privateData": [
+      "rating",
+      "opening salt"
+    ],
+    "publicData": [
+      "participant identifier",
+      "commitment",
+      "revealed rating"
+    ]
+  },
+  "scaffold": {
+    "tool": "create-mn-app",
+    "command": "npx create-mn-app@latest sealed-feedback-lab --template hello-world",
+    "setupCommand": "npm run setup",
+    "initialNetwork": "undeployed",
+    "source": "https://github.com/midnightntwrk/create-mn-app"
+  },
+  "agent": {
+    "expert": "midnight-expert",
+    "doctorCommand": "/midnight-expert:doctor",
+    "contextFiles": [
+      "PROJECT_SPEC.md",
+      "AGENTS.md"
+    ],
+    "editablePaths": [
+      "contracts/",
+      "tests/"
+    ],
+    "forbiddenPromptData": [
+      "wallet seed",
+      "private-state password",
+      "opening salt"
+    ],
+    "prompt": "Use installed Midnight Expert Compact review and verification capabilities. Read PROJECT_SPEC.md, AGENTS.md, the contract, and focused tests. Implement only the sealed-feedback slice, preserve unrelated files, state the disclosure boundary before editing, run all named positive and negative cases, separate observed evidence from inference, and stop if a required tool is unavailable. Never request or expose secrets."
+  },
+  "verification": {
+    "commands": [
+      "npm run setup",
+      "npm test"
+    ],
+    "cases": [
+      "happy-path",
+      "wrong-opening",
+      "unauthorized-caller",
+      "replay",
+      "retained-state"
+    ],
+    "evidencePolicy": {
+      "separateObservedFromInferred": true,
+      "networkClaimsNeedReadBack": true,
+      "securityNeedsHumanReview": true
+    }
+  },
+  "feedback": {
+    "observations": [
+      {
+        "category": "documentation",
+        "symptom": "The example run has not yet distinguished local simulation from confirmed network execution.",
+        "evidence": "This reference is a plan and contains no transaction identifier or indexed network read-back.",
+        "proposedImprovement": "Use an evidence template that requires network ID, confirmation, and indexed read-back before a deployment claim."
+      }
+    ],
+    "metrics": {
+      "taskSuccess": false,
+      "compactCompile": false,
+      "testsPassed": false,
+      "unsupportedClaims": false
+    },
+    "humanReview": "pending"
+  }
+}

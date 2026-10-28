@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feedback workflow exercise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Sealed feedback workflow</h1>
+    <p>Local simulation — no wallet, proof or blockchain transaction.</p>
+    <p>This exercise focuses on pending and confirmed UI states for a sample rating.</p>
+    <!-- Announce asynchronous status changes without requiring focus to move. -->
+    <p id="status" role="status" aria-live="polite"></p>
+    <!-- Use real buttons so keyboard and assistive-technology activation work. -->
+    <button id="commit" type="button">Commit sample rating</button>
+    <button id="reveal" type="button">Reveal sample rating</button>
+    <!-- Expose failures separately from the success status. -->
+    <p id="error" role="alert"></p>
+  </main>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+// Pin the language understood by the course's compiler version.
+pragma language_version 0.23;
+// Use the compiler's standard library without adding an npm dependency.
+import CompactStandardLibrary;
+
+// Define the fields grouped into one participant record.
+export struct Entry {
+    // Retain the public commitment that binds this record to its private opening.
+    commitment: Bytes<32>;
+    // Track whether this record has already been opened.
+    revealed: Boolean;
+    // Store the placeholder or the deliberately disclosed rating for this record.
+    value: Uint<8>;
+}
+// Store the accepted public organizer identifier, not the organizer's secret.
+export ledger organizer: Bytes<32>;
+// Record the lifecycle stage so circuits can reject operations at the wrong time.
+export ledger phase: Uint<8>; // 0 = submit, 1 = reveal, 2 = closed.
+// Keep a separate public map entry for each identifier.
+export ledger allowed: Map<Bytes<32>, Boolean>;
+// Keep a separate public map entry for each identifier.
+export ledger entries: Map<Bytes<32>, Entry>;
+// Track a public total using the ledger's counter operations.
+export ledger total: Counter;
+// Count accepted reveals so the average includes only opened entries.
+export ledger revealedCount: Counter;
+
+// Initialize the accepted public authority when this contract instance is created.
+constructor(organizerId: Bytes<32>) {
+    // Permit this value to become public at this deliberate disclosure point.
+    organizer = disclose(organizerId);
+}
+
+// Derive the record identifier from the private authorization secret.
+circuit keyFor(secret: Bytes<32>): Bytes<32> {
+    // Compute a deterministic identifier without revealing the underlying secret.
+    return persistentHash<Vector<3, Bytes<32>>>([
+        // Bind this identifier to the application purpose, contract instance and private secret.
+        pad(32, "feedback:round:user:v1"), kernel.self().bytes, secret
+    ]);
+}
+// Let the caller obtain the public identifier using the contract's own derivation.
+export circuit participantId(secret: Bytes<32>): Bytes<32> {
+    // Return the public identifier while keeping its secret input private.
+    return disclose(keyFor(secret));
+}
+// Centralize the proof-of-secret check used by organizer-only operations.
+circuit requireOrganizer(secret: Bytes<32>): [] {
+    // Require knowledge of the organizer secret before privileged state changes.
+    assert(persistentHash<Bytes<32>>(secret) == organizer, "Not organizer");
+}
+
+// Let the organizer authorize a participant before submissions close.
+export circuit admit(adminSecret: Bytes<32>, member: Bytes<32>): [] {
+    // Require the organizer secret before allowing this privileged operation.
+    requireOrganizer(adminSecret);
+    // Disallow adding eligible participants after the submission phase.
+    assert(phase == 0, "Admissions closed");
+    // Permit this value to become public at this deliberate disclosure point.
+    const id = disclose(member);
+    // Avoid duplicate membership entries.
+    assert(!allowed.member(id), "Already admitted");
+    // Write the validated record to the public map under this identifier.
+    allowed.insert(id, true);
+}
+// Accept one eligible participant's hidden rating during the submission phase.
+export circuit submit(secret: Bytes<32>, choice: Uint<8>, salt: Bytes<32>): [] {
+    // Prevent late submissions after participants can see revealed ratings.
+    assert(phase == 0, "Submission closed");
+    // Permit this value to become public at this deliberate disclosure point.
+    const id = disclose(keyFor(secret));
+    // Require organizer-granted membership rather than accepting any new secret.
+    assert(allowed.member(id), "Not admitted");
+    // Prevent replacing a commitment after a participant has submitted.
+    assert(!entries.member(id), "Already submitted");
+    // Reject values that fit the numeric type but violate the application rule.
+    assert(choice >= 1 && choice <= 5, "Rating must be 1 to 5");
+    // Write the validated record to the public map under this identifier.
+    entries.insert(id, Entry {
+        // Retain the public commitment that binds this record to its private opening.
+        commitment: persistentCommit<Uint<8>>(choice, salt),
+        // Track whether this record has already been opened.
+        revealed: false,
+        // Store the placeholder or the deliberately disclosed rating for this record.
+        value: 0
+    });
+}
+// Allow the organizer to advance the round into its reveal phase.
+export circuit startReveal(adminSecret: Bytes<32>): [] {
+    // Require the organizer secret before allowing this privileged operation.
+    requireOrganizer(adminSecret);
+    // Permit only the next forward transition in the round lifecycle.
+    assert(phase == 0, "Wrong phase");
+    // Advance the public lifecycle only after the organizer and phase checks.
+    phase = 1;
+}
+// Open an authorized, unrevealed entry only during the allowed phase.
+export circuit reveal(id: Bytes<32>, secret: Bytes<32>, choice: Uint<8>, salt: Bytes<32>): [] {
+    // Only publish ratings during the reveal phase.
+    assert(phase == 1, "Reveal not open");
+    // Reject callers who do not know the secret corresponding to this record ID.
+    assert(id == keyFor(secret), "Not the owner");
+    // Permit this value to become public at this deliberate disclosure point.
+    const publicId = disclose(id);
+    // Check existence before reading a map entry that may be absent.
+    assert(entries.member(publicId), "No submission");
+    // Read the existing record only after its existence has been checked.
+    const previous = entries.lookup(publicId);
+    // Prevent repeated reveals from reusing the same submission.
+    assert(!previous.revealed, "Already revealed");
+    // Bind the reveal to the original choice and salt, rather than trusting the caller.
+    assert(previous.commitment == persistentCommit<Uint<8>>(choice, salt), "Wrong opening");
+    // Write the validated record to the public map under this identifier.
+    entries.insert(publicId, Entry {
+        // Retain the public commitment that binds this record to its private opening.
+        commitment: previous.commitment,
+        // Track whether this record has already been opened.
+        revealed: true,
+        // Store the placeholder or the deliberately disclosed rating for this record.
+        value: disclose(choice)
+    });
+    // Update the public counter only after the preceding operation has succeeded.
+    total.increment(disclose(choice));
+    // Update the public counter only after the preceding operation has succeeded.
+    revealedCount.increment(1);
+}
+// Freeze the round against further reveals after the organizer closes it.
+export circuit close(adminSecret: Bytes<32>): [] {
+    // Require the organizer secret before allowing this privileged operation.
+    requireOrganizer(adminSecret);
+    // Permit only the next forward transition in the round lifecycle.
+    assert(phase == 1, "Wrong phase");
+    // Advance the public lifecycle only after the organizer and phase checks.
+    phase = 2;
+}

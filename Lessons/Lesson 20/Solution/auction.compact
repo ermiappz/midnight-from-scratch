@@ -1,0 +1,106 @@
+// Use the same pinned language as the earlier contracts.
+pragma language_version 0.23;
+// Import maps, counters, hashes and commitments from the compiler library.
+import CompactStandardLibrary;
+
+// Keep each sealed bid and its eventual public opening in one record.
+export struct Bid {
+  // Bind this record to its original bid and secret salt.
+  commitment: Bytes<32>;
+  // Prevent a valid opening from being counted twice.
+  revealed: Boolean;
+  // Hold zero while sealed, then the deliberately public revealed bid.
+  value: Uint<16>;
+}
+// Store the organizer's public identifier, never the organizer secret.
+export ledger organizer: Bytes<32>;
+// Enforce submit (0), reveal (1), and closed (2) in the contract.
+export ledger phase: Uint<8>;
+// Keep independent records under secret-derived participant IDs.
+export ledger bids: Map<Bytes<32>, Bid>;
+// Track the greatest successfully revealed bid.
+export ledger highest: Uint<16>;
+// Publish the identifier of the winning revealed bid.
+export ledger winner: Bytes<32>;
+// Distinguish an empty result from an auction with revealed bids.
+export ledger revealedCount: Counter;
+
+// Accept the public organizer identifier at construction.
+constructor(organizerId: Bytes<32>) {
+  // Deliberately make the constructor's chosen authority public.
+  organizer = disclose(organizerId);
+}
+// Bind participant IDs to this purpose and this deployment.
+circuit keyFor(secret: Bytes<32>): Bytes<32> {
+  // Include purpose and deployment address so the ID is not reused across contracts.
+  return persistentHash<Vector<3, Bytes<32>>>([pad(32, "auction:user:v1"), kernel.self().bytes, secret]);
+}
+// Let local callers derive the same public ID used by the contract.
+export circuit participantId(secret: Bytes<32>): Bytes<32> {
+  // Return the public identifier without returning its underlying secret.
+  return disclose(keyFor(secret));
+}
+// Centralize authorization of phase transitions.
+circuit requireOrganizer(secret: Bytes<32>): [] {
+  // Require knowledge of the secret belonging to the recorded organizer.
+  assert(persistentHash<Bytes<32>>(secret) == organizer, "Not organizer");
+}
+// Commit one bounded bid while the submission phase is open.
+export circuit commitBid(secret: Bytes<32>, bid: Uint<16>, salt: Bytes<32>): [] {
+  // Reject late submissions after participants can see revealed bids.
+  assert(phase == 0, "Submission closed");
+  // Enforce the application range even though the type permits larger values.
+  assert(bid >= 1 && bid <= 1000, "Bid must be 1 to 1000");
+  // Publish only the participant ID at this point.
+  const id = disclose(keyFor(secret));
+  // Prevent replacing a commitment after submission.
+  assert(!bids.member(id), "Already submitted");
+  // Preserve the sealed value and an unrevealed placeholder.
+  bids.insert(id, Bid { commitment: persistentCommit<Uint<16>>(bid, salt), revealed: false, value: 0 });
+}
+// Allow only the organizer to enter reveal, exactly once.
+export circuit startReveal(admin: Bytes<32>): [] {
+  // Reject unauthorized callers before any phase change.
+  requireOrganizer(admin);
+  // Only submission may advance into reveal.
+  assert(phase == 0, "Wrong phase");
+  // Publish the new phase only after authorization and ordering checks.
+  phase = 1;
+}
+// Open the record belonging to this secret and update the winner after all checks.
+export circuit revealBid(secret: Bytes<32>, bid: Uint<16>, salt: Bytes<32>): [] {
+  // Reject early and late reveals even if the opening is valid.
+  assert(phase == 1, "Reveal closed");
+  // Select the caller’s own record using the supplied authorization secret.
+  const id = disclose(keyFor(secret));
+  // Check existence before reading the map entry.
+  assert(bids.member(id), "No bid");
+  // Retrieve the commitment and reveal flag from the selected record.
+  const previous = bids.lookup(id);
+  // Prevent replay from increasing the count or affecting the winner.
+  assert(!previous.revealed, "Already revealed");
+  // Bind publication to the exact original bid and salt.
+  assert(previous.commitment == persistentCommit<Uint<16>>(bid, salt), "Wrong opening");
+  // Deliberately publish every opened bid; this is not an aggregate-only auction.
+  const value = disclose(bid);
+  // Retain the commitment and record the now-public accepted bid.
+  bids.insert(id, Bid { commitment: previous.commitment, revealed: true, value: value });
+  // Count each valid opening once, including a bid that does not win.
+  revealedCount.increment(1);
+  // Strict greater-than means equal bids retain the first successfully revealed winner.
+  if (value > highest) {
+    // Replace the maximum only when a strictly greater bid is revealed.
+    highest = value;
+    // Associate that maximum with the record that actually revealed it.
+    winner = id;
+  }
+}
+// Freeze the outcome after the reveal phase; no payments are implemented in this project.
+export circuit close(admin: Bytes<32>): [] {
+  // Reject unauthorized callers before any phase change.
+  requireOrganizer(admin);
+  // Allow closure only after the reveal phase has begun.
+  assert(phase == 1, "Wrong phase");
+  // Freeze future reveal attempts by advancing the checked phase.
+  phase = 2;
+}

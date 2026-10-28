@@ -1,0 +1,6 @@
+// Pin the course language.
+pragma language_version 0.23;
+// Import ledger and hashing operations.
+import CompactStandardLibrary;
+
+// TODO 10A: Add the numeric map and storeRating circuit.

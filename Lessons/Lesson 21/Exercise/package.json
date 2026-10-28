@@ -1,0 +1,8 @@
+{
+  "name": "midnight-exercise-21",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node check.mjs"
+  }
+}

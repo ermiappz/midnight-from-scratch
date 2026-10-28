@@ -1,0 +1,8 @@
+// Pin the language used in the course.
+pragma language_version 0.23;
+// Make ledger types and commitment functions available.
+import CompactStandardLibrary;
+
+// TODO 15B: Add Entry, the ledger fields and the organizer constructor.
+// TODO 15C: Add participant IDs, admission and submission.
+// TODO 15D: Add reveal, closure and their authorization/phase checks.

@@ -1,0 +1,12 @@
+{
+  "12C": {
+    "transactionService": null,
+    "queryService": null,
+    "stopDeletesVolumes": null
+  },
+  "12A": {
+    "suppliedStack": null,
+    "localNetwork": null,
+    "explorerIncluded": null
+  }
+}

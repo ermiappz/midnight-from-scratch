@@ -1,0 +1,3 @@
+# Reuse the supplied Midnight stack; keep service definitions in one place.
+include:
+  - ../../../../network/compose.yaml

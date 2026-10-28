@@ -1,0 +1,10 @@
+/* Keep the small exercise readable on narrow screens as well as desktop. */
+body { font: 1rem/1.6 system-ui, sans-serif; margin: 2rem auto; padding: 0 1rem; max-width: 42rem; color: #172b35; background: #f6f8f9; }
+/* Give interactive controls enough space for keyboard and pointer use. */
+button { font: inherit; padding: .6rem 1rem; margin: .25rem; cursor: pointer; }
+/* Keep focus visible independently of hover or button color. */
+button:focus-visible { outline: 3px solid #2463b8; outline-offset: 3px; }
+/* Distinguish an unavailable action while retaining its readable label. */
+button:disabled { cursor: not-allowed; }
+/* Use a dedicated error area rather than replacing the status with raw exceptions. */
+#error { color: #9c2020; }

@@ -1,0 +1,88 @@
+// Select the source language supported by compiler 0.31.1.
+pragma language_version 0.23;
+// Make the compiler's built-in ledger and cryptographic operations available.
+import CompactStandardLibrary;
+
+// Store the message publicly so the JS runner can inspect accepted state.
+export ledger message: Opaque<"string">;
+// Count successful message calls independently of the text they contain.
+export ledger edits: Counter;
+
+// Expose one operation that accepts a message and returns no application value.
+export circuit storeMessage(newMessage: Opaque<"string">): [] {
+    // Explicitly allow the private argument to become a public ledger value.
+    message = disclose(newMessage);
+    // Count this successful call, including repeated identical messages.
+    edits.increment(1);
+}
+
+// Reserve a public rating; the initial zero means not rated yet.
+export ledger rating: Uint<8>;
+
+// Accept a private numeric argument through a separate entry point.
+export circuit setRating(newRating: Uint<8>): [] {
+    // Reject values that fit the type but violate the application's 1–5 rule.
+    assert(newRating >= 1 && newRating <= 5, "Rating must be 1 to 5");
+    // Publish the rating only after its application rule succeeds.
+    rating = disclose(newRating);
+}
+
+// Read public state without assigning to any ledger field.
+export circuit readRating(): Uint<8> {
+    // Return the existing public value as the application's answer.
+    return rating;
+}
+
+// Return a Boolean answer for the stored rating without changing it.
+export circuit isFiveStars(): Boolean {
+    // Compare instead of assigning so this remains a read-only operation.
+    return rating == 5;
+}
+
+// Declare a callback whose JavaScript implementation supplies the local preference.
+witness preferredRating(): Uint<8>;
+
+// Ask the callback for its value rather than taking a rating argument.
+export circuit applyPreferredRating(): [] {
+    // Treat the witness result as caller-controlled input.
+    const choice = preferredRating();
+    // Enforce the rule in the circuit even if the caller replaces its JS callback.
+    assert(choice >= 1 && choice <= 5, "Rating must be 1 to 5");
+    // Deliberately publish the validated preference in this example.
+    rating = disclose(choice);
+}
+
+// Store a public commitment, not the secret choice and salt.
+export ledger ratingCommitment: Bytes<32>;
+// Distinguish an unused slot from a slot that already holds a commitment.
+export ledger hasCommitment: Boolean;
+// Prevent the same committed choice from being revealed twice.
+export ledger hasRevealed: Boolean;
+// Hold zero before opening, then the deliberately published choice.
+export ledger revealedRating: Uint<8>;
+
+// Bind one valid choice to one secret salt without publishing either input.
+export circuit commitRating(choice: Uint<8>, salt: Bytes<32>): [] {
+    // Prevent replacing the commitment after choosing a rating.
+    assert(!hasCommitment, "Rating already committed");
+    // Bind only ratings allowed by the application.
+    assert(choice >= 1 && choice <= 5, "Rating must be 1 to 5");
+    // Publish the hiding commitment; the caller must supply good secret randomness.
+    ratingCommitment = persistentCommit<Uint<8>>(choice, salt);
+    // Mark the slot occupied only after validation and commitment construction.
+    hasCommitment = true;
+}
+
+// Verify the claimed opening before publishing the original rating.
+export circuit revealRating(choice: Uint<8>, salt: Bytes<32>): [] {
+    // Avoid opening a slot that has never received a commitment.
+    assert(hasCommitment, "No rating committed");
+    // Make reveal a one-time operation for this slot.
+    assert(!hasRevealed, "Rating already revealed");
+    // Reject a changed rating or salt by recomputing the stored commitment.
+    assert(persistentCommit<Uint<8>>(choice, salt) == ratingCommitment, "Opening does not match commitment");
+    // Publish the choice only after its opening has been verified.
+    revealedRating = disclose(choice);
+    // Record that this opening has already been used.
+    hasRevealed = true;
+}

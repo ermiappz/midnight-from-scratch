@@ -1,0 +1,24 @@
+{
+  "14D": {
+    "submittedMeansConfirmed": null,
+    "retryWithNewSalt": null,
+    "readBackRequired": null
+  },
+  "14E": {
+    "localId": null,
+    "previewId": null,
+    "testnetId": null,
+    "productionId": null,
+    "vitePreviewSelectsNetwork": null
+  },
+  "14F": {
+    "shareSeeds": null,
+    "deployForEachTester": null,
+    "readBackRequired": null
+  },
+  "14G": {
+    "productionBuildSelectsMainnet": null,
+    "faucetAvailable": null,
+    "localEvidenceProvesMainnet": null
+  }
+}

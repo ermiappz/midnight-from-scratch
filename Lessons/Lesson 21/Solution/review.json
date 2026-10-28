@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "feature": {
+    "goal": "Collect bounded ratings, seal them before opening, and preserve phase and owner checks.",
+    "ratingMin": 1,
+    "ratingMax": 5,
+    "publicAtCommit": [
+      "participantId",
+      "commitment"
+    ],
+    "publicAtReveal": [
+      "rating"
+    ],
+    "private": [
+      "secret",
+      "salt"
+    ]
+  },
+  "request": {
+    "compiler": "0.31.1",
+    "language": "0.23",
+    "runtime": "0.16.0",
+    "sdk": "4.1.1",
+    "target": "Lessons/Lesson 15/Exercise/round.compact",
+    "expertSkills": [
+      "compact-core:compact-review",
+      "midnight-verify:verify-compact"
+    ],
+    "prompt": "Use Midnight expert to review the rating bounds and opening/phase/owner checks. Propose the smallest change, run the relevant local negative tests, and report tested evidence separately from source interpretation. Never expose secrets or claim network confirmation from local execution.",
+    "sourceFiles": [
+      "Lessons/Lesson 15/Solution/round.compact",
+      "Lessons/Lesson 16/Solution/tests.mjs"
+    ]
+  },
+  "verification": {
+    "cases": [
+      {
+        "id": "valid-opening",
+        "expected": "Original rating and salt are accepted in reveal phase.",
+        "evidenceStatus": "not-run",
+        "evidence": "Reference plan only: no learner implementation has been executed by this worksheet."
+      },
+      {
+        "id": "wrong-rating",
+        "expected": "A different in-range rating cannot open the saved commitment.",
+        "evidenceStatus": "not-run",
+        "evidence": "Reference plan only: no learner implementation has been executed by this worksheet."
+      },
+      {
+        "id": "wrong-salt",
+        "expected": "A changed salt cannot open the saved commitment.",
+        "evidenceStatus": "not-run",
+        "evidence": "Reference plan only: no learner implementation has been executed by this worksheet."
+      },
+      {
+        "id": "unauthorized-owner",
+        "expected": "A different participant secret cannot authorize this record.",
+        "evidenceStatus": "not-run",
+        "evidence": "Reference plan only: no learner implementation has been executed by this worksheet."
+      },
+      {
+        "id": "replay",
+        "expected": "A second reveal is rejected without counting again.",
+        "evidenceStatus": "not-run",
+        "evidence": "Reference plan only: no learner implementation has been executed by this worksheet."
+      },
+      {
+        "id": "phase",
+        "expected": "Submit after submit phase and reveal before reveal phase are rejected.",
+        "evidenceStatus": "not-run",
+        "evidence": "Reference plan only: no learner implementation has been executed by this worksheet."
+      },
+      {
+        "id": "unchanged-state",
+        "expected": "Failed calls retain the previously accepted totals and record state.",
+        "evidenceStatus": "not-run",
+        "evidence": "Reference plan only: no learner implementation has been executed by this worksheet."
+      }
+    ],
+    "privacy": {
+      "noSecretInPublicReceipt": true,
+      "stableIdCanLinkActions": true,
+      "localTestsProveNetworkDeployment": false
+    },
+    "limitations": "This is an example review plan; replace not-run observations with actual command evidence after running your implementation. Network confirmation and human code review remain separate.",
+    "humanReview": "pending"
+  }
+}

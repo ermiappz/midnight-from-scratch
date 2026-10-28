@@ -1,0 +1,9 @@
+node_modules/
+managed/
+build/
+.env.local
+.private-state/
+*.json.tmp
+deployment.json
+round-deployment.json
+opening.json

@@ -1,0 +1,6442 @@
+[
+  {
+    "source": 0,
+    "slug": "course-repository",
+    "title": "Where to learn, work, and check",
+    "subtitle": "Repository map · every lesson keeps editable work beside its completed reference.",
+    "desc": "Repository map · every lesson keeps editable work beside its completed reference.",
+    "label": "COURSE OVERVIEW",
+    "cue": [
+      "Open Exercise to learn and edit; open the neighboring Solution only when you need a reference."
+    ],
+    "nodes": [
+      {
+        "id": "root",
+        "title": "Course repository",
+        "body": [
+          "midnight-from-scratch/"
+        ],
+        "kind": "store",
+        "code": "README.md · start here",
+        "box": [
+          424,
+          184,
+          432,
+          152
+        ]
+      },
+      {
+        "id": "ex",
+        "title": "Lessons index",
+        "body": [
+          "Lessons/README.md",
+          "Lesson 00/ … Lesson 22/",
+          "One route through the course"
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          40,
+          416,
+          368,
+          200
+        ]
+      },
+      {
+        "id": "sol",
+        "title": "Exercise + Solution",
+        "body": [
+          "Exercise/: guide + starter",
+          "Solution/: completed reference",
+          "Same lesson, one level apart"
+        ],
+        "kind": "store",
+        "box": [
+          440,
+          416,
+          368,
+          200
+        ]
+      },
+      {
+        "id": "checks",
+        "title": "Stage checking",
+        "body": [
+          "scripts/exercises/",
+          "Checkpoint specifications",
+          "and behavior checks"
+        ],
+        "kind": "step",
+        "box": [
+          848,
+          416,
+          392,
+          200
+        ]
+      },
+      {
+        "id": "manifest",
+        "title": "Course commands",
+        "body": [
+          "package.json",
+          "Shared runtime dependency"
+        ],
+        "kind": "store",
+        "box": [
+          40,
+          688,
+          552,
+          152
+        ]
+      },
+      {
+        "id": "history",
+        "title": "Local progress",
+        "body": [
+          ".exercise-progress.json",
+          "Generated; ignored by Git"
+        ],
+        "kind": "store",
+        "box": [
+          688,
+          688,
+          552,
+          152
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            488,
+            336
+          ],
+          [
+            488,
+            368
+          ],
+          [
+            224,
+            368
+          ],
+          [
+            224,
+            416
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            640,
+            336
+          ],
+          [
+            640,
+            416
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            792,
+            336
+          ],
+          [
+            792,
+            368
+          ],
+          [
+            1044,
+            368
+          ],
+          [
+            1044,
+            416
+          ]
+        ]
+      }
+    ],
+    "height": 1008,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "README.md"
+  },
+  {
+    "source": 1,
+    "slug": "course-local-execution",
+    "title": "Local execution: follow the returned context",
+    "subtitle": "Lessons 2–11 · compile and call the generated JavaScript contract in memory.",
+    "desc": "Lessons 2–11 · compile and call the generated JavaScript contract in memory.",
+    "label": "COURSE OVERVIEW",
+    "cue": [
+      "The next local call receives the returned context. --skip-zk leaves proving artifacts out of this learning loop."
+    ],
+    "nodes": [
+      {
+        "id": "src",
+        "title": "Compact source",
+        "body": [
+          "Write the contract’s circuits",
+          "and public ledger fields."
+        ],
+        "kind": "step",
+        "code": "hello.compact",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "compile",
+        "title": "Compile locally",
+        "body": [
+          "Generate the Contract class",
+          "and ledger decoder."
+        ],
+        "kind": "step",
+        "code": "compact compile --skip-zk",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "call",
+        "title": "JavaScript runner",
+        "body": [
+          "Import Contract; prepare the",
+          "execution context; call a circuit."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "result",
+        "title": "Execution result",
+        "body": [
+          "result + updated context",
+          "Decode public state with ledger()."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STATE"
+      },
+      {
+        "id": "next",
+        "title": "Next local call",
+        "body": [
+          "Pass the returned context",
+          "to continue from the new state."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          448,
+          320,
+          184
+        ],
+        "tag": "05 / STEP"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            920,
+            540.0
+          ],
+          [
+            800,
+            540.0
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "README.md"
+  },
+  {
+    "source": 1,
+    "slug": "course-network-execution",
+    "title": "A transaction reaches the network",
+    "subtitle": "Lessons 12–15 · full compilation supplies the artifacts needed for proving.",
+    "desc": "Lessons 12–15 · full compilation supplies the artifacts needed for proving.",
+    "label": "COURSE OVERVIEW",
+    "cue": [
+      "Submission is followed by network validation and indexed confirmation before the application reads back the result."
+    ],
+    "nodes": [
+      {
+        "id": "compile",
+        "title": "Full compilation",
+        "body": [
+          "Compact source becomes a JS",
+          "interface and proving artifacts."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "app",
+        "title": "Application call",
+        "body": [
+          "Private state and witnesses",
+          "supply circuit execution inputs."
+        ],
+        "kind": "private",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / PRIVATE"
+      },
+      {
+        "id": "proof",
+        "title": "Proof provider",
+        "body": [
+          "The proof server builds the",
+          "proof for the transaction."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet",
+        "body": [
+          "Balance, sign, and cover",
+          "transaction costs with DUST."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STEP"
+      },
+      {
+        "id": "node",
+        "title": "Network node",
+        "body": [
+          "Validate the submitted",
+          "transaction."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          448,
+          320,
+          184
+        ],
+        "tag": "05 / STEP"
+      },
+      {
+        "id": "index",
+        "title": "Indexer + app",
+        "body": [
+          "Observe confirmation, then",
+          "read confirmed public state."
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          40,
+          448,
+          320,
+          184
+        ],
+        "tag": "06 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            920,
+            540.0
+          ],
+          [
+            800,
+            540.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            480,
+            540.0
+          ],
+          [
+            360,
+            540.0
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "README.md"
+  },
+  {
+    "source": 2,
+    "slug": "course-selective-disclosure",
+    "title": "Choose what becomes public",
+    "subtitle": "Information boundary · a private source does not make its disclosed value private.",
+    "desc": "Information boundary · a private source does not make its disclosed value private.",
+    "label": "COURSE OVERVIEW",
+    "cue": [
+      "disclose(value) deliberately exposes that chosen value in public contract state."
+    ],
+    "nodes": [
+      {
+        "id": "private",
+        "title": "Local notebook",
+        "body": [
+          "Private application data",
+          "is read through a witness."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "circuit",
+        "title": "Circuit",
+        "body": [
+          "Enforce the contract’s checks",
+          "and choose what to disclose."
+        ],
+        "kind": "step",
+        "code": "disclose(value)",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "public",
+        "title": "Public state",
+        "body": [
+          "The disclosed value can be",
+          "read from the contract ledger."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "WITNESS"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "DISCLOSE"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "README.md"
+  },
+  {
+    "source": 2,
+    "slug": "course-commitment",
+    "title": "Seal a choice, then open the same choice",
+    "subtitle": "Commitment flow · the contract compares a recomputed fingerprint with the stored one.",
+    "desc": "Commitment flow · the contract compares a recomputed fingerprint with the stored one.",
+    "label": "COURSE OVERVIEW",
+    "cue": [
+      "The opening must match the earlier commitment. The choice becomes public; the secret salt stays local in this design."
+    ],
+    "nodes": [
+      {
+        "id": "opening",
+        "title": "Private opening",
+        "body": [
+          "choice + secret salt",
+          "Keep the pair for later."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "seal",
+        "title": "Commitment",
+        "body": [
+          "Store a sealed fingerprint",
+          "in the public ledger."
+        ],
+        "kind": "store",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STORE"
+      },
+      {
+        "id": "later",
+        "title": "Recompute + compare",
+        "body": [
+          "Supply the same choice and salt.",
+          "Compare with the stored value."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "reveal",
+        "title": "Public rating",
+        "body": [
+          "Only a matching opening",
+          "may disclose the rating."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "README.md"
+  },
+  {
+    "source": 2,
+    "slug": "course-scoped-identity",
+    "title": "A record ID can link public actions",
+    "subtitle": "Identity flow · purpose and contract address scope the participant’s derived ID.",
+    "desc": "Identity flow · purpose and contract address scope the participant’s derived ID.",
+    "label": "COURSE OVERVIEW",
+    "cue": [
+      "The secret stays private. The record ID, commitment, and later revealed rating are public."
+    ],
+    "nodes": [
+      {
+        "id": "inputs",
+        "title": "Private secret",
+        "body": [
+          "Combine with a purpose label",
+          "and this contract’s address."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "hash",
+        "title": "Scoped hash",
+        "body": [
+          "Derive the ID used to find",
+          "this participant’s record."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "record",
+        "title": "Public record ID",
+        "body": [
+          "Select the record containing",
+          "commitment / revealed rating."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "README.md"
+  },
+  {
+    "source": 3,
+    "slug": "course-learning-path",
+    "title": "From one value to an independently verified project",
+    "subtitle": "Course milestones · each project adds a responsibility, then the final loop evaluates agent assistance.",
+    "desc": "Course milestones progress from a public value through sealed feedback and an independent capstone to an agent-assisted project whose claims require evidence.",
+    "label": "COURSE OVERVIEW",
+    "cue": [
+      "The final milestone transfers the pattern, then measures whether agent assistance produced reviewed evidence."
+    ],
+    "nodes": [
+      {
+        "id": "public",
+        "title": "Public contract",
+        "body": [
+          "Store and validate a value."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "sealed",
+        "title": "Sealed rating",
+        "body": [
+          "Commit before revealing."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "people",
+        "title": "Multiple participants",
+        "body": [
+          "Separate and authorize records."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "round",
+        "title": "Feedback round",
+        "body": [
+          "Coordinate phases and totals."
+        ],
+        "kind": "step",
+        "code": "Lesson 15",
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STEP"
+      },
+      {
+        "id": "tests",
+        "title": "Adversarial tests",
+        "body": [
+          "Try invalid and unauthorized calls."
+        ],
+        "kind": "step",
+        "code": "Lesson 16",
+        "box": [
+          480,
+          448,
+          320,
+          184
+        ],
+        "tag": "05 / STEP"
+      },
+      {
+        "id": "notebook",
+        "title": "Recovery notebook",
+        "body": [
+          "Recover the original opening."
+        ],
+        "kind": "step",
+        "code": "Lesson 17",
+        "box": [
+          40,
+          448,
+          320,
+          184
+        ],
+        "tag": "06 / STEP"
+      },
+      {
+        "id": "ui",
+        "title": "Feedback UI",
+        "body": [
+          "Wait for confirmed public state."
+        ],
+        "kind": "step",
+        "code": "Lesson 18",
+        "box": [
+          40,
+          688,
+          320,
+          184
+        ],
+        "tag": "07 / STEP"
+      },
+      {
+        "id": "review",
+        "title": "Privacy review",
+        "body": [
+          "Inspect what observers can learn."
+        ],
+        "kind": "step",
+        "code": "Lesson 19",
+        "box": [
+          480,
+          688,
+          320,
+          184
+        ],
+        "tag": "08 / STEP"
+      },
+      {
+        "id": "capstone",
+        "title": "Independent + agentic",
+        "body": [
+          "Build, verify, and log friction."
+        ],
+        "kind": "step",
+        "code": "Lessons 20–22",
+        "focal": true,
+        "box": [
+          920,
+          688,
+          320,
+          184
+        ],
+        "tag": "09 / STEP"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            920,
+            540.0
+          ],
+          [
+            800,
+            540.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            480,
+            540.0
+          ],
+          [
+            360,
+            540.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            200.0,
+            632
+          ],
+          [
+            200.0,
+            688
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            360,
+            780.0
+          ],
+          [
+            480,
+            780.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            780.0
+          ],
+          [
+            920,
+            780.0
+          ]
+        ]
+      }
+    ],
+    "height": 1104,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Blue: key idea",
+    "source_document": "README.md"
+  },
+  {
+    "source": 4,
+    "slug": "exercise-feedback-loop",
+    "title": "One stage, one feedback loop",
+    "subtitle": "Practice loop · the check evaluates your exercise files and reports what is missing.",
+    "desc": "Practice loop · the check evaluates your exercise files and reports what is missing.",
+    "label": "EXERCISE LOOP",
+    "cue": [
+      "A pass records the checked revision. A failure gives you a concrete requirement to fix before continuing."
+    ],
+    "nodes": [
+      {
+        "id": "read",
+        "title": "Read the stage",
+        "body": [
+          "Identify its one new requirement."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          224,
+          352,
+          160
+        ]
+      },
+      {
+        "id": "edit",
+        "title": "Edit your starter",
+        "body": [
+          "Work in the exercise folder."
+        ],
+        "kind": "step",
+        "box": [
+          464,
+          224,
+          352,
+          160
+        ]
+      },
+      {
+        "id": "check",
+        "title": "Run the stage check",
+        "body": [
+          "npm run check -- 3A"
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          888,
+          224,
+          352,
+          160
+        ]
+      },
+      {
+        "id": "fix",
+        "title": "Fix the reported issue",
+        "body": [
+          "Use the failure message."
+        ],
+        "kind": "step",
+        "box": [
+          464,
+          496,
+          352,
+          152
+        ]
+      },
+      {
+        "id": "pass",
+        "title": "Record + proceed",
+        "body": [
+          "Save this passing revision;",
+          "continue to the next stage."
+        ],
+        "kind": "state",
+        "box": [
+          888,
+          496,
+          352,
+          152
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            392,
+            304
+          ],
+          [
+            464,
+            304
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            816,
+            304
+          ],
+          [
+            888,
+            304
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1064,
+            384
+          ],
+          [
+            1064,
+            496
+          ]
+        ],
+        "label": "PASS",
+        "at": [
+          1104,
+          440
+        ]
+      },
+      {
+        "points": [
+          [
+            1000,
+            384
+          ],
+          [
+            1000,
+            440
+          ],
+          [
+            640,
+            440
+          ],
+          [
+            640,
+            496
+          ]
+        ],
+        "label": "FAIL",
+        "at": [
+          800,
+          420
+        ]
+      },
+      {
+        "points": [
+          [
+            464,
+            572
+          ],
+          [
+            424,
+            572
+          ],
+          [
+            424,
+            328
+          ],
+          [
+            464,
+            328
+          ]
+        ],
+        "label": "RETRY",
+        "at": [
+          376,
+          452
+        ],
+        "dashed": true
+      }
+    ],
+    "height": 824,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Dashed arrow: retry · Blue: key idea",
+    "source_document": "Lessons/README.md"
+  },
+  {
+    "source": 5,
+    "slug": "lesson-00-tools",
+    "title": "Three tools, three jobs",
+    "subtitle": "Tool orientation · compilation produces JavaScript; Node executes it; npm installs its libraries.",
+    "desc": "Tool orientation · compilation produces JavaScript; Node executes it; npm installs its libraries.",
+    "label": "LESSON 00",
+    "cue": [
+      "Compact is the compiler. Node is the JavaScript runtime. npm prepares the dependencies that the runner imports."
+    ],
+    "nodes": [
+      {
+        "id": "src",
+        "title": "Compact source",
+        "body": [
+          "Your .compact contract."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "generated",
+        "title": "Generated JavaScript",
+        "body": [
+          "Produced by the compact",
+          "compiler."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "execute",
+        "title": "Node execution",
+        "body": [
+          "Run the generated contract",
+          "with npm-installed libraries."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STEP"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Blue: key idea",
+    "source_document": "Lessons/Lesson 00/Exercise/README.md"
+  },
+  {
+    "source": 6,
+    "slug": "lesson-01-manifest",
+    "title": "A manifest describes the package",
+    "subtitle": "Configuration map · naming the project and preventing accidental publication are separate fields.",
+    "desc": "Configuration map · naming the project and preventing accidental publication are separate fields.",
+    "label": "LESSON 01",
+    "cue": [
+      "private: true is an npm publishing setting, not a blockchain privacy setting."
+    ],
+    "nodes": [
+      {
+        "id": "pkg",
+        "title": "package.json",
+        "body": [
+          "Project configuration",
+          "No application code yet."
+        ],
+        "kind": "store",
+        "box": [
+          40,
+          240,
+          352,
+          200
+        ]
+      },
+      {
+        "id": "name",
+        "title": "name",
+        "body": [
+          "A project label."
+        ],
+        "kind": "step",
+        "box": [
+          688,
+          192,
+          552,
+          144
+        ]
+      },
+      {
+        "id": "private",
+        "title": "private: true",
+        "body": [
+          "Block npm publication of",
+          "this package."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          688,
+          384,
+          552,
+          144
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            392,
+            288
+          ],
+          [
+            540,
+            288
+          ],
+          [
+            540,
+            264
+          ],
+          [
+            688,
+            264
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            392,
+            384
+          ],
+          [
+            564,
+            384
+          ],
+          [
+            564,
+            456
+          ],
+          [
+            688,
+            456
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 01/Exercise/README.md"
+  },
+  {
+    "source": 7,
+    "slug": "lesson-02-disclosure",
+    "title": "The moment a message becomes public",
+    "subtitle": "storeMessage() · cross the boundary deliberately using disclose(...).",
+    "desc": "storeMessage() · cross the boundary deliberately using disclose(...).",
+    "label": "LESSON 02",
+    "cue": [
+      "The argument starts private; the stored message is public because the circuit explicitly discloses it."
+    ],
+    "nodes": [
+      {
+        "id": "arg",
+        "title": "Private argument",
+        "body": [
+          "The caller supplies a message."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "disclose",
+        "title": "storeMessage()",
+        "body": [
+          "disclose(...) makes the value",
+          "available to public state."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "message",
+        "title": "Public message",
+        "body": [
+          "The ledger now contains",
+          "the disclosed message."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "CALL"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "DISCLOSE"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 02/Exercise/README.md"
+  },
+  {
+    "source": 8,
+    "slug": "lesson-03-call-result",
+    "title": "A circuit call returns data and context",
+    "subtitle": "Execution map · the generated Contract is called by run.js with an execution context.",
+    "desc": "Execution map · the generated Contract is called by run.js with an execution context.",
+    "label": "LESSON 03",
+    "cue": [
+      "For this circuit, result is an empty array; the changed ledger lives in the returned context."
+    ],
+    "nodes": [
+      {
+        "id": "compile",
+        "title": "Compile the source",
+        "body": [
+          "Create the generated Contract."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "call",
+        "title": "Call with context",
+        "body": [
+          "run.js supplies the current",
+          "execution context."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "result",
+        "title": "Inspect the result",
+        "body": [
+          "result: []",
+          "context: updated state"
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 03/Exercise/README.md"
+  },
+  {
+    "source": 9,
+    "slug": "lesson-03-initial-context",
+    "title": "Prepare a context before the first call",
+    "subtitle": "Initialization flow · the local runner needs state and a test identity before execution.",
+    "desc": "Initialization flow · the local runner needs state and a test identity before execution.",
+    "label": "LESSON 03",
+    "cue": [
+      "Initial state is the starting point. The execution context packages it for the circuit call."
+    ],
+    "nodes": [
+      {
+        "id": "inputs",
+        "title": "Local inputs",
+        "body": [
+          "Private state + dummy identity."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "initial",
+        "title": "Initial state",
+        "body": [
+          "Create the contract’s",
+          "starting state."
+        ],
+        "kind": "state",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STATE"
+      },
+      {
+        "id": "context",
+        "title": "Ready to call",
+        "body": [
+          "Build an execution context",
+          "from the initial state."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 03/Exercise/README.md"
+  },
+  {
+    "source": 10,
+    "slug": "lesson-03-build-import-call",
+    "title": "From source file to an in-memory update",
+    "subtitle": "File-to-runtime map · the runner imports the compiler output, then calls it.",
+    "desc": "File-to-runtime map · the runner imports the compiler output, then calls it.",
+    "label": "LESSON 03",
+    "cue": [
+      "The compiler generates the JavaScript module; run.js uses that module to update local state."
+    ],
+    "nodes": [
+      {
+        "id": "source",
+        "title": "hello.compact",
+        "body": [
+          "Contract source."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "module",
+        "title": "Generated module",
+        "body": [
+          "managed/hello/contract/",
+          "index.js"
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "runner",
+        "title": "run.js",
+        "body": [
+          "Import, call with context,",
+          "inspect the updated state."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "COMPILE"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "IMPORT + CALL"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 03/Exercise/README.md"
+  },
+  {
+    "source": 11,
+    "slug": "lesson-04-context-chain",
+    "title": "Carry state forward between calls",
+    "subtitle": "State trace · each new context contains the edits made by the previous call.",
+    "desc": "State trace · each new context contains the edits made by the previous call.",
+    "label": "LESSON 04",
+    "cue": [
+      "Restarting this local runner creates fresh initial state: edits returns to 0."
+    ],
+    "nodes": [
+      {
+        "id": "zero",
+        "title": "Before the first call",
+        "body": [
+          "edits = 0",
+          "Pass the initial context."
+        ],
+        "kind": "state",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STATE"
+      },
+      {
+        "id": "one",
+        "title": "After storeMessage",
+        "body": [
+          "edits = 1",
+          "Use result.context next."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STATE"
+      },
+      {
+        "id": "two",
+        "title": "After the next call",
+        "body": [
+          "edits = 2",
+          "State continues in memory."
+        ],
+        "kind": "state",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "CALL 1"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "CALL 2"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 04/Exercise/README.md"
+  },
+  {
+    "source": 12,
+    "slug": "lesson-05-validation",
+    "title": "Two gates protect the rating",
+    "subtitle": "Validation flow · representation limits and application rules answer different questions.",
+    "desc": "Validation flow · representation limits and application rules answer different questions.",
+    "label": "LESSON 05",
+    "cue": [
+      "Passing the numeric type check does not prove a valid rating. Both gates must pass before publication."
+    ],
+    "nodes": [
+      {
+        "id": "range",
+        "title": "Fits Uint<8>?",
+        "body": [
+          "0 … 255"
+        ],
+        "kind": "decision",
+        "box": [
+          80,
+          192,
+          400,
+          120
+        ]
+      },
+      {
+        "id": "business",
+        "title": "Is it 1 … 5?",
+        "body": [
+          "business rule"
+        ],
+        "kind": "decision",
+        "focal": true,
+        "box": [
+          80,
+          392,
+          400,
+          120
+        ]
+      },
+      {
+        "id": "publish",
+        "title": "Disclose + store",
+        "body": [
+          "A valid rating reaches",
+          "the public ledger."
+        ],
+        "kind": "store",
+        "box": [
+          80,
+          592,
+          400,
+          144
+        ]
+      },
+      {
+        "id": "typefail",
+        "title": "Reject 256",
+        "body": [
+          "Cannot represent the input",
+          "as Uint<8>."
+        ],
+        "kind": "terminal",
+        "box": [
+          760,
+          180,
+          440,
+          144
+        ]
+      },
+      {
+        "id": "rulefail",
+        "title": "Reject 0 or 6",
+        "body": [
+          "Fits the type, but violates",
+          "the rating rule."
+        ],
+        "kind": "terminal",
+        "box": [
+          760,
+          380,
+          440,
+          144
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            480,
+            252
+          ],
+          [
+            760,
+            252
+          ]
+        ],
+        "label": "NO"
+      },
+      {
+        "points": [
+          [
+            280,
+            312
+          ],
+          [
+            280,
+            392
+          ]
+        ],
+        "label": "YES",
+        "at": [
+          324,
+          352
+        ]
+      },
+      {
+        "points": [
+          [
+            480,
+            452
+          ],
+          [
+            760,
+            452
+          ]
+        ],
+        "label": "NO"
+      },
+      {
+        "points": [
+          [
+            280,
+            512
+          ],
+          [
+            280,
+            592
+          ]
+        ],
+        "label": "YES",
+        "at": [
+          324,
+          552
+        ]
+      }
+    ],
+    "height": 920,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 05/Exercise/README.md"
+  },
+  {
+    "source": 13,
+    "slug": "lesson-05-execution-pipeline",
+    "title": "Follow one call all the way through",
+    "subtitle": "Execution pipeline · compilation prepares the module; execution checks and updates the state.",
+    "desc": "Execution pipeline · compilation prepares the module; execution checks and updates the state.",
+    "label": "LESSON 05",
+    "cue": [
+      "Use ledger(...) to decode the returned public state before displaying its values."
+    ],
+    "nodes": [
+      {
+        "id": "build",
+        "title": "Compile source",
+        "body": [
+          "Generate the JavaScript",
+          "contract module."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "initial",
+        "title": "Initialize",
+        "body": [
+          "JS creates initial state",
+          "and builds a call context."
+        ],
+        "kind": "state",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STATE"
+      },
+      {
+        "id": "circuit",
+        "title": "Call exported circuit",
+        "body": [
+          "The runner supplies",
+          "the circuit arguments."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "check",
+        "title": "Enforce rules",
+        "body": [
+          "Input checks, then assertion,",
+          "then the state update."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STEP"
+      },
+      {
+        "id": "result",
+        "title": "Execution result",
+        "body": [
+          "Return the updated context",
+          "to the JavaScript runner."
+        ],
+        "kind": "state",
+        "box": [
+          480,
+          448,
+          320,
+          184
+        ],
+        "tag": "05 / STATE"
+      },
+      {
+        "id": "display",
+        "title": "Decode + display",
+        "body": [
+          "ledger(...) reads the state",
+          "for terminal output."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          448,
+          320,
+          184
+        ],
+        "tag": "06 / STEP"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            920,
+            540.0
+          ],
+          [
+            800,
+            540.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            480,
+            540.0
+          ],
+          [
+            360,
+            540.0
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 05/Exercise/README.md"
+  },
+  {
+    "source": 14,
+    "slug": "lesson-06-read-only",
+    "title": "Return a value without changing the rating",
+    "subtitle": "Read-only calls · results answer questions about the same existing context.",
+    "desc": "Read-only calls · results answer questions about the same existing context.",
+    "label": "LESSON 06",
+    "cue": [
+      "Both calls leave the stored rating at 5. A return value is separate from a public-state update."
+    ],
+    "nodes": [
+      {
+        "id": "state",
+        "title": "Current context",
+        "body": [
+          "rating = 5"
+        ],
+        "kind": "state",
+        "box": [
+          40,
+          256,
+          352,
+          176
+        ]
+      },
+      {
+        "id": "read",
+        "title": "readRating()",
+        "body": [
+          "Return result: 5n."
+        ],
+        "kind": "step",
+        "box": [
+          688,
+          200,
+          552,
+          144
+        ]
+      },
+      {
+        "id": "bool",
+        "title": "isFiveStars()",
+        "body": [
+          "Return result: true."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          688,
+          400,
+          552,
+          144
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            392,
+            296
+          ],
+          [
+            536,
+            296
+          ],
+          [
+            536,
+            272
+          ],
+          [
+            688,
+            272
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            392,
+            384
+          ],
+          [
+            568,
+            384
+          ],
+          [
+            568,
+            472
+          ],
+          [
+            688,
+            472
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 06/Exercise/README.md"
+  },
+  {
+    "source": 15,
+    "slug": "lesson-07-witness-value",
+    "title": "A witness supplies a private value",
+    "subtitle": "Data path · JavaScript reads privateState and returns the value the circuit will check.",
+    "desc": "Data path · JavaScript reads privateState and returns the value the circuit will check.",
+    "label": "LESSON 07",
+    "cue": [
+      "The source is private. Once the circuit discloses the chosen value, public rating = 4."
+    ],
+    "nodes": [
+      {
+        "id": "private",
+        "title": "Local private state",
+        "body": [
+          "preferredRating: 4n"
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "witness",
+        "title": "JavaScript witness",
+        "body": [
+          "Return the tuple containing",
+          "private state and the value."
+        ],
+        "kind": "step",
+        "code": "[privateState, 4n]",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "circuit",
+        "title": "Compact circuit",
+        "body": [
+          "Validate 1 … 5; disclose 4;",
+          "store the public rating."
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 07/Exercise/README.md"
+  },
+  {
+    "source": 16,
+    "slug": "lesson-07-witness-sequence",
+    "title": "Who calls the witness?",
+    "subtitle": "Sequence · read downward to follow a no-rating-argument circuit call.",
+    "desc": "Sequence · read downward to follow a no-rating-argument circuit call.",
+    "label": "LESSON 07",
+    "cue": [
+      "The runtime asks JavaScript for the witness value during execution; the circuit still enforces the rating rule."
+    ],
+    "nodes": [],
+    "arrows": [],
+    "height": 880,
+    "zones": [],
+    "annotations": [],
+    "legend": "Solid arrow: call / update · Dashed arrow: returned value · Time runs downward",
+    "actors": [
+      "JS runner",
+      "Compact circuit",
+      "JS witness",
+      "Public ledger"
+    ],
+    "messages": [
+      [
+        0,
+        1,
+        "applyPreferredRating(context)",
+        false
+      ],
+      [
+        1,
+        2,
+        "preferredRating(context)",
+        false
+      ],
+      [
+        2,
+        1,
+        "[privateState, 4n]",
+        true
+      ],
+      [
+        1,
+        3,
+        "assert 1…5; disclose 4",
+        false
+      ],
+      [
+        1,
+        0,
+        "execution result + updated context",
+        true
+      ],
+      [
+        0,
+        3,
+        "ledger(...) → read public rating",
+        false
+      ]
+    ],
+    "source_document": "Lessons/Lesson 07/Exercise/README.md"
+  },
+  {
+    "source": 17,
+    "slug": "lesson-08-constraint-boundary",
+    "title": "A valid rating is not a verified preference",
+    "subtitle": "Trust boundary · the caller controls the JavaScript callback that supplies the witness.",
+    "desc": "Trust boundary · the caller controls the JavaScript callback that supplies the witness.",
+    "label": "LESSON 08",
+    "cue": [
+      "The circuit proves only its enforced constraints—not “this was saved” or “a real customer submitted it”.",
+      "On-chain, a verifier checks the proof of those same enforced constraints."
+    ],
+    "nodes": [
+      {
+        "id": "caller",
+        "title": "Caller-controlled JS",
+        "body": [
+          "The callback may supply",
+          "a different choice."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "rules",
+        "title": "Circuit constraint",
+        "body": [
+          "Check 1 ≤ choice ≤ 5.",
+          "An in-range substitute passes."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "publish",
+        "title": "Published choice",
+        "body": [
+          "The supplied valid choice",
+          "is stored publicly."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "SUPPLY"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "PASS"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 08/Exercise/README.md"
+  },
+  {
+    "source": 18,
+    "slug": "lesson-09-commit-reveal",
+    "title": "The opening must match the sealed choice",
+    "subtitle": "Two moments · the ledger stores a commitment first and publishes the rating only after a match.",
+    "desc": "Two moments · the ledger stores a commitment first and publishes the rating only after a match.",
+    "label": "LESSON 09",
+    "cue": [
+      "Changing the choice or salt changes the checked opening. The salt stays local, including during reveal."
+    ],
+    "nodes": [
+      {
+        "id": "opening",
+        "title": "Private opening",
+        "body": [
+          "choice = 3",
+          "random secret salt"
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ]
+      },
+      {
+        "id": "commit",
+        "title": "persistentCommit",
+        "body": [
+          "Compute the fingerprint",
+          "from choice + salt."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ]
+      },
+      {
+        "id": "sealed",
+        "title": "Committed ledger",
+        "body": [
+          "32-byte ratingCommitment",
+          "hasCommitment = true",
+          "hasRevealed = false; rating = 0"
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ]
+      },
+      {
+        "id": "same",
+        "title": "Same private opening",
+        "body": [
+          "Same choice + same salt",
+          "Keep the salt local."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          468,
+          320,
+          184
+        ]
+      },
+      {
+        "id": "verify",
+        "title": "Recompute + compare",
+        "body": [
+          "Must match the stored",
+          "ratingCommitment."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          468,
+          320,
+          184
+        ]
+      },
+      {
+        "id": "revealed",
+        "title": "Revealed ledger",
+        "body": [
+          "revealedRating = 3",
+          "hasRevealed = true"
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          468,
+          320,
+          184
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300
+          ],
+          [
+            480,
+            300
+          ]
+        ],
+        "label": "COMMIT"
+      },
+      {
+        "points": [
+          [
+            800,
+            300
+          ],
+          [
+            920,
+            300
+          ]
+        ],
+        "label": "STORE"
+      },
+      {
+        "points": [
+          [
+            360,
+            560
+          ],
+          [
+            480,
+            560
+          ]
+        ],
+        "label": "RECOMPUTE"
+      },
+      {
+        "points": [
+          [
+            800,
+            560
+          ],
+          [
+            920,
+            560
+          ]
+        ],
+        "label": "MATCH"
+      },
+      {
+        "points": [
+          [
+            1080,
+            392
+          ],
+          [
+            1080,
+            428
+          ],
+          [
+            640,
+            428
+          ],
+          [
+            640,
+            468
+          ]
+        ],
+        "label": "COMPARE",
+        "at": [
+          828,
+          408
+        ],
+        "dashed": true
+      }
+    ],
+    "height": 840,
+    "zones": [],
+    "annotations": [],
+    "legend": "Dashed border: private opening · Dashed arrow: stored commitment used for comparison · Blue: enforced match",
+    "source_document": "Lessons/Lesson 09/Exercise/README.md"
+  },
+  {
+    "source": 19,
+    "slug": "lesson-09-lifecycle",
+    "title": "Three states, two allowed transitions",
+    "subtitle": "Commit/reveal state machine · rejected calls do not advance the lifecycle.",
+    "desc": "Commit/reveal state machine · rejected calls do not advance the lifecycle.",
+    "label": "LESSON 09",
+    "cue": [
+      "An incorrect opening leaves the record COMMITTED. Only a matching reveal moves it to REVEALED."
+    ],
+    "nodes": [
+      {
+        "id": "empty",
+        "title": "EMPTY",
+        "body": [
+          "No commitment yet.",
+          "Reveal now → reject."
+        ],
+        "kind": "state",
+        "box": [
+          88,
+          224,
+          288,
+          208
+        ],
+        "tag": "01 / STATE"
+      },
+      {
+        "id": "committed",
+        "title": "COMMITTED",
+        "body": [
+          "Commit again → reject.",
+          "Wrong opening → reject."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          496,
+          224,
+          288,
+          208
+        ],
+        "tag": "02 / STATE"
+      },
+      {
+        "id": "revealed",
+        "title": "REVEALED",
+        "body": [
+          "The rating is public.",
+          "Reveal again → reject."
+        ],
+        "kind": "state",
+        "box": [
+          904,
+          224,
+          288,
+          208
+        ],
+        "tag": "03 / STATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            376,
+            328
+          ],
+          [
+            496,
+            328
+          ]
+        ],
+        "label": "COMMIT"
+      },
+      {
+        "points": [
+          [
+            784,
+            328
+          ],
+          [
+            904,
+            328
+          ]
+        ],
+        "label": "MATCH + REVEAL"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Filled dot: initial state · Ringed dot: terminal state · Arrows: permitted transitions",
+    "source_document": "Lessons/Lesson 09/Exercise/README.md",
+    "state_machine": true
+  },
+  {
+    "source": 20,
+    "slug": "lesson-09-committed-context",
+    "title": "Keep the opening; use the returned context",
+    "subtitle": "Commit call · private opening data and the new public context have different roles.",
+    "desc": "Commit call · private opening data and the new public context have different roles.",
+    "label": "LESSON 09",
+    "cue": [
+      "A placeholder rating of 0 means “not opened”; it is not the secret rating becoming public."
+    ],
+    "nodes": [
+      {
+        "id": "opening",
+        "title": "Local opening",
+        "body": [
+          "choice: 3",
+          "salt: retained privately"
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "commit",
+        "title": "commitRating",
+        "body": [
+          "Seal the choice using",
+          "the supplied opening."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "context",
+        "title": "committed.context",
+        "body": [
+          "Public commitment exists.",
+          "Public rating is still 0."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 09/Exercise/README.md"
+  },
+  {
+    "source": 21,
+    "slug": "lesson-10-three-questions",
+    "title": "Find the record, authorize it, open it",
+    "subtitle": "Three distinct questions · each input has a different job in the protocol.",
+    "desc": "Three distinct questions · each input has a different job in the protocol.",
+    "label": "LESSON 10",
+    "cue": [
+      "ID selects a record. The secret authorizes ownership. Choice + salt must match its earlier commitment."
+    ],
+    "nodes": [
+      {
+        "id": "id",
+        "title": "Which record?",
+        "body": [
+          "Use the public ID",
+          "to locate the record."
+        ],
+        "kind": "store",
+        "tag": "ID",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ]
+      },
+      {
+        "id": "owner",
+        "title": "Whose record?",
+        "body": [
+          "Check the secret-derived",
+          "ownership of that ID."
+        ],
+        "kind": "step",
+        "tag": "SECRET",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ]
+      },
+      {
+        "id": "opening",
+        "title": "Which earlier choice?",
+        "body": [
+          "Check choice + salt against",
+          "the stored commitment."
+        ],
+        "kind": "step",
+        "tag": "OPENING",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 22,
+    "slug": "lesson-10a-public-map",
+    "title": "A map gives a label its own slot",
+    "subtitle": "10A · begin with a public label and a public rating before adding ownership.",
+    "desc": "10A · begin with a public label and a public rating before adding ownership.",
+    "label": "LESSON 10",
+    "cue": [
+      "The numeric label is public and caller-supplied; this first map example is not an ownership check."
+    ],
+    "nodes": [
+      {
+        "id": "input",
+        "title": "Alice’s label",
+        "body": [
+          "label = 1",
+          "rating = 3"
+        ],
+        "kind": "step",
+        "tag": "INPUT",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ]
+      },
+      {
+        "id": "insert",
+        "title": "Store the entry",
+        "body": [
+          "Insert the supplied label",
+          "and rating into submissions."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "map",
+        "title": "submissions",
+        "body": [
+          "Key 1 → value 3",
+          "Alice’s current public rating."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 23,
+    "slug": "lesson-10b-secret-id",
+    "title": "A secret derives the record ID",
+    "subtitle": "10B · only the secret stays private; the derived ID is a public lookup key.",
+    "desc": "10B · only the secret stays private; the derived ID is a public lookup key.",
+    "label": "LESSON 10",
+    "cue": [
+      "Hashing the secret gives the ID used to find Alice’s record. This stage has not added contract scoping yet."
+    ],
+    "nodes": [
+      {
+        "id": "secret",
+        "title": "Alice’s secret",
+        "body": [
+          "Keep the secret local."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "id",
+        "title": "Alice’s ID",
+        "body": [
+          "Hash the secret to derive",
+          "the public identifier."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "record",
+        "title": "Alice’s record",
+        "body": [
+          "Look up submissions",
+          "using that identifier."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "HASH"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "LOOKUP"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 24,
+    "slug": "lesson-10c-record-shape",
+    "title": "Replace a public value with a sealed record",
+    "subtitle": "10C · the same ID now points to a record containing commitment and reveal status.",
+    "desc": "10C · the same ID now points to a record containing commitment and reveal status.",
+    "label": "LESSON 10",
+    "cue": [
+      "Before reveal, value = 0 is a placeholder; the commitment represents the sealed choice."
+    ],
+    "nodes": [
+      {
+        "id": "before",
+        "title": "Before",
+        "body": [
+          "Alice’s ID → 3",
+          "A public numeric rating."
+        ],
+        "kind": "store",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STORE"
+      },
+      {
+        "id": "after",
+        "title": "After",
+        "body": [
+          "Alice’s ID → sealed record",
+          "Store several related fields."
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STORE"
+      },
+      {
+        "id": "fields",
+        "title": "Record fields",
+        "body": [
+          "commitment: sealed choice",
+          "revealed: false",
+          "value: 0 (placeholder)"
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "REPLACE"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "FIELDS"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 25,
+    "slug": "lesson-10c-commit-guards",
+    "title": "Check before inserting the sealed record",
+    "subtitle": "10C · commit one valid choice into a previously unused participant slot.",
+    "desc": "10C · commit one valid choice into a previously unused participant slot.",
+    "label": "LESSON 10",
+    "cue": [
+      "Derive the ID first. Reject an existing record or an out-of-range choice before inserting anything."
+    ],
+    "nodes": [
+      {
+        "id": "id",
+        "title": "Derive Alice’s ID",
+        "body": [
+          "Select the participant slot."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "empty",
+        "title": "Assert no record",
+        "body": [
+          "A repeated commit must fail."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "range",
+        "title": "Assert choice 1 … 5",
+        "body": [
+          "Reject invalid ratings."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "insert",
+        "title": "Insert sealed record",
+        "body": [
+          "Store commitment,",
+          "revealed: false, value: 0."
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 26,
+    "slug": "lesson-10d-reveal-guards",
+    "title": "Two checks unlock one reveal",
+    "subtitle": "10D · a correct opening cannot bypass ownership; ownership cannot bypass the opening check.",
+    "desc": "10D · a correct opening cannot bypass ownership; ownership cannot bypass the opening check.",
+    "label": "LESSON 10",
+    "cue": [
+      "Only after both checks pass: record.value = choice and record.revealed = true."
+    ],
+    "nodes": [
+      {
+        "id": "owner",
+        "title": "Right owner?",
+        "body": [
+          "owner + secret",
+          "Must identify this record."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "opening",
+        "title": "Matching commitment?",
+        "body": [
+          "choice + salt",
+          "Must open its sealed choice."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "update",
+        "title": "Publish the result",
+        "body": [
+          "record.value = choice",
+          "record.revealed = true"
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "PASS"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "PASS"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 27,
+    "slug": "lesson-10e-two-participants",
+    "title": "Two people, two independently guarded records",
+    "subtitle": "10E · a participant’s secret derives their own ID, not another participant’s ID.",
+    "desc": "10E · a participant’s secret derives their own ID, not another participant’s ID.",
+    "label": "LESSON 10",
+    "cue": [
+      "Alice cannot open Bob’s record using her own secret.",
+      "Bob can open it with his own secret and the matching choice + salt."
+    ],
+    "nodes": [
+      {
+        "id": "asecret",
+        "title": "Alice’s secret",
+        "body": [
+          "Private to Alice."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          208,
+          320,
+          176
+        ]
+      },
+      {
+        "id": "aid",
+        "title": "Alice’s ID",
+        "body": [
+          "Select Alice’s record."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          208,
+          320,
+          176
+        ]
+      },
+      {
+        "id": "ar",
+        "title": "Alice’s record",
+        "body": [
+          "revealed: true",
+          "value: 3"
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          208,
+          320,
+          176
+        ]
+      },
+      {
+        "id": "bsecret",
+        "title": "Bob’s secret",
+        "body": [
+          "Private to Bob."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          448,
+          320,
+          176
+        ]
+      },
+      {
+        "id": "bid",
+        "title": "Bob’s ID",
+        "body": [
+          "Select Bob’s record."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          448,
+          320,
+          176
+        ]
+      },
+      {
+        "id": "br",
+        "title": "Bob’s record",
+        "body": [
+          "revealed: false",
+          "value: 0"
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          920,
+          448,
+          320,
+          176
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            296
+          ],
+          [
+            480,
+            296
+          ]
+        ],
+        "label": "DERIVE"
+      },
+      {
+        "points": [
+          [
+            800,
+            296
+          ],
+          [
+            920,
+            296
+          ]
+        ],
+        "label": "LOOKUP"
+      },
+      {
+        "points": [
+          [
+            360,
+            536
+          ],
+          [
+            480,
+            536
+          ]
+        ],
+        "label": "DERIVE"
+      },
+      {
+        "points": [
+          [
+            800,
+            536
+          ],
+          [
+            920,
+            536
+          ]
+        ],
+        "label": "LOOKUP"
+      }
+    ],
+    "height": 824,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 28,
+    "slug": "lesson-10f-scoped-id",
+    "title": "Bind the ID to this contract",
+    "subtitle": "10F · identity derivation includes more than the participant secret.",
+    "desc": "10F · identity derivation includes more than the participant secret.",
+    "label": "LESSON 10",
+    "cue": [
+      "The purpose label and this contract’s address scope the derived identifier to its intended use."
+    ],
+    "nodes": [
+      {
+        "id": "inputs",
+        "title": "Hash inputs",
+        "body": [
+          "purpose label",
+          "this contract’s address",
+          "participant secret"
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "hash",
+        "title": "Scoped hash",
+        "body": [
+          "Combine all three inputs",
+          "in the ID derivation."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "id",
+        "title": "ID for this contract",
+        "body": [
+          "Use this public identifier",
+          "to select the record."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 10/Exercise/README.md"
+  },
+  {
+    "source": 29,
+    "slug": "lesson-11-reproducible-build",
+    "title": "Two preparations, one local run",
+    "subtitle": "Build map · the Compact compiler and npm prepare different things for the runner.",
+    "desc": "Build map · the Compact compiler and npm prepare different things for the runner.",
+    "label": "LESSON 11",
+    "cue": [
+      "Compile source into JavaScript; use npm ci for reproducible runtime dependencies; then execute the runner."
+    ],
+    "nodes": [
+      {
+        "id": "src",
+        "title": "Compact source",
+        "body": [
+          "Compile the contract."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          352,
+          160
+        ]
+      },
+      {
+        "id": "js",
+        "title": "Generated JS",
+        "body": [
+          "The runner imports this module."
+        ],
+        "kind": "step",
+        "box": [
+          464,
+          208,
+          352,
+          160
+        ]
+      },
+      {
+        "id": "out",
+        "title": "Local result",
+        "body": [
+          "Node executes the runner",
+          "with the installed runtime."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          888,
+          208,
+          352,
+          160
+        ]
+      },
+      {
+        "id": "pkg",
+        "title": "Manifest + lockfile",
+        "body": [
+          "package.json + lockfile"
+        ],
+        "kind": "store",
+        "box": [
+          40,
+          464,
+          352,
+          160
+        ]
+      },
+      {
+        "id": "deps",
+        "title": "Installed runtime",
+        "body": [
+          "npm ci installs the locked",
+          "JavaScript dependencies."
+        ],
+        "kind": "step",
+        "box": [
+          464,
+          464,
+          352,
+          160
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            392,
+            288
+          ],
+          [
+            464,
+            288
+          ]
+        ],
+        "label": "COMPILE"
+      },
+      {
+        "points": [
+          [
+            816,
+            288
+          ],
+          [
+            888,
+            288
+          ]
+        ],
+        "label": "NODE"
+      },
+      {
+        "points": [
+          [
+            392,
+            544
+          ],
+          [
+            464,
+            544
+          ]
+        ],
+        "label": "NPM CI"
+      },
+      {
+        "points": [
+          [
+            816,
+            544
+          ],
+          [
+            1064,
+            544
+          ],
+          [
+            1064,
+            368
+          ]
+        ],
+        "label": "RUNTIME",
+        "at": [
+          944,
+          524
+        ]
+      }
+    ],
+    "height": 816,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 11/Exercise/README.md"
+  },
+  {
+    "source": 30,
+    "slug": "lesson-12-services",
+    "title": "Three services with different responsibilities",
+    "subtitle": "Local network architecture · similar-looking endpoints do different work.",
+    "desc": "Local network architecture · similar-looking endpoints do different work.",
+    "label": "LESSON 12",
+    "cue": [
+      "Proof server builds proofs; node handles transactions; indexer exposes the chain data your app reads."
+    ],
+    "nodes": [
+      {
+        "id": "app",
+        "title": "Application",
+        "body": [
+          "Execution inputs",
+          "Transactions",
+          "Queries / subscriptions"
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          288,
+          352,
+          224
+        ]
+      },
+      {
+        "id": "proof",
+        "title": "Proof server",
+        "body": [
+          "Build a proof from private",
+          "execution inputs."
+        ],
+        "kind": "step",
+        "code": ":6300",
+        "box": [
+          776,
+          184,
+          464,
+          152
+        ]
+      },
+      {
+        "id": "node",
+        "title": "Node",
+        "body": [
+          "Receive transactions;",
+          "the network validates them."
+        ],
+        "kind": "step",
+        "code": ":9944",
+        "box": [
+          776,
+          392,
+          464,
+          152
+        ]
+      },
+      {
+        "id": "index",
+        "title": "Indexer",
+        "body": [
+          "Serve chain and wallet data;",
+          "follow blocks from the node."
+        ],
+        "kind": "store",
+        "code": ":8088",
+        "focal": true,
+        "box": [
+          776,
+          600,
+          464,
+          152
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            392,
+            328
+          ],
+          [
+            552,
+            328
+          ],
+          [
+            552,
+            260
+          ],
+          [
+            776,
+            260
+          ]
+        ],
+        "label": "PROVE",
+        "at": [
+          652,
+          240
+        ]
+      },
+      {
+        "points": [
+          [
+            392,
+            400
+          ],
+          [
+            632,
+            400
+          ],
+          [
+            632,
+            444
+          ],
+          [
+            776,
+            444
+          ]
+        ],
+        "label": "SUBMIT",
+        "at": [
+          524,
+          380
+        ]
+      },
+      {
+        "points": [
+          [
+            392,
+            472
+          ],
+          [
+            520,
+            472
+          ],
+          [
+            520,
+            676
+          ],
+          [
+            776,
+            676
+          ]
+        ],
+        "label": "QUERY / WATCH",
+        "at": [
+          648,
+          656
+        ]
+      },
+      {
+        "points": [
+          [
+            1008,
+            600
+          ],
+          [
+            1008,
+            544
+          ]
+        ],
+        "label": "FOLLOW BLOCKS",
+        "at": [
+          1112,
+          572
+        ]
+      }
+    ],
+    "height": 928,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 12/Exercise/README.md"
+  },
+  {
+    "source": 31,
+    "slug": "lesson-13-wallet-readiness",
+    "title": "Prepare the local wallet before submitting",
+    "subtitle": "Wallet setup · the course fixture seed is public and intended only for the local network.",
+    "desc": "Wallet setup · the course fixture seed is public and intended only for the local network.",
+    "label": "LESSON 13",
+    "cue": [
+      "The wallet must synchronize and have DUST readiness before it can balance, sign, and submit a transaction."
+    ],
+    "nodes": [
+      {
+        "id": "seed",
+        "title": "Public local fixture",
+        "body": [
+          "Seed → role keys",
+          "Use the local course setup."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "wallet",
+        "title": "Wallet + sync",
+        "body": [
+          "Build the wallet and wait",
+          "for synchronization."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "ready",
+        "title": "DUST readiness",
+        "body": [
+          "Check resources for fees;",
+          "then balance / sign / submit."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STEP"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Blue: key idea",
+    "source_document": "Lessons/Lesson 13/Exercise/README.md"
+  },
+  {
+    "source": 31,
+    "slug": "lesson-13-provider-routing",
+    "title": "Providers connect the app to its dependencies",
+    "subtitle": "Provider architecture · each interface has a concrete service or storage destination.",
+    "desc": "Provider architecture · each interface has a concrete service or storage destination.",
+    "label": "LESSON 13",
+    "cue": [
+      "Public-state access, proving, artifact loading, and local private storage are separate responsibilities."
+    ],
+    "nodes": [
+      {
+        "id": "app",
+        "title": "Application providers",
+        "body": [
+          "Route each responsibility",
+          "to the right implementation."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          320,
+          368,
+          192
+        ]
+      },
+      {
+        "id": "public",
+        "title": "Public state",
+        "body": [
+          "Indexer queries / subscriptions."
+        ],
+        "kind": "store",
+        "box": [
+          760,
+          184,
+          480,
+          128
+        ]
+      },
+      {
+        "id": "proof",
+        "title": "Proofs",
+        "body": [
+          "Proof server."
+        ],
+        "kind": "step",
+        "box": [
+          760,
+          360,
+          480,
+          128
+        ]
+      },
+      {
+        "id": "art",
+        "title": "Artifacts",
+        "body": [
+          "Compiled files."
+        ],
+        "kind": "store",
+        "box": [
+          760,
+          536,
+          480,
+          128
+        ]
+      },
+      {
+        "id": "private",
+        "title": "Private storage",
+        "body": [
+          "Private state + maintenance keys",
+          "stay in the local store."
+        ],
+        "kind": "private",
+        "focal": true,
+        "box": [
+          40,
+          608,
+          504,
+          144
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            408,
+            352
+          ],
+          [
+            552,
+            352
+          ],
+          [
+            552,
+            248
+          ],
+          [
+            760,
+            248
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            408,
+            408
+          ],
+          [
+            760,
+            408
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            408,
+            464
+          ],
+          [
+            584,
+            464
+          ],
+          [
+            584,
+            600
+          ],
+          [
+            760,
+            600
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            224,
+            512
+          ],
+          [
+            224,
+            608
+          ]
+        ]
+      }
+    ],
+    "height": 920,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 13/Exercise/README.md"
+  },
+  {
+    "source": 32,
+    "slug": "lesson-14-deployment",
+    "title": "Deploy once, reconnect, then transact",
+    "subtitle": "Network workflow · full compilation produces JS, ZKIR, and proving/verifying artifacts.",
+    "desc": "Network workflow · full compilation produces JS, ZKIR, and proving/verifying artifacts.",
+    "label": "LESSON 14",
+    "cue": [
+      "Commit and reveal each need confirmation; inspect indexed state to verify the resulting public rating."
+    ],
+    "nodes": [
+      {
+        "id": "compile",
+        "title": "Full compile",
+        "body": [
+          "feedback.compact → JS + ZKIR",
+          "+ proving/verifying artifacts"
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "deploy",
+        "title": "Providers + deploy",
+        "body": [
+          "Prepare providers; deploy;",
+          "wait for the confirmed address."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "reconnect",
+        "title": "Reconnect",
+        "body": [
+          "Use the confirmed address",
+          "to find the deployed contract."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "commit",
+        "title": "Commit",
+        "body": [
+          "Submit the sealed rating;",
+          "wait for confirmation."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STEP"
+      },
+      {
+        "id": "reveal",
+        "title": "Reveal",
+        "body": [
+          "Submit its matching opening;",
+          "wait for confirmation."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          448,
+          320,
+          184
+        ],
+        "tag": "05 / STEP"
+      },
+      {
+        "id": "read",
+        "title": "Read indexed state",
+        "body": [
+          "Check the confirmed public",
+          "result of the contract call."
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          40,
+          448,
+          320,
+          184
+        ],
+        "tag": "06 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            920,
+            540.0
+          ],
+          [
+            800,
+            540.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            480,
+            540.0
+          ],
+          [
+            360,
+            540.0
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 14/Exercise/README.md"
+  },
+  {
+    "source": 33,
+    "slug": "lesson-15-round-phases",
+    "title": "The round controls which actions are legal",
+    "subtitle": "Feedback round · the organizer admits members and controls the phase transitions.",
+    "desc": "Feedback round · the organizer admits members and controls the phase transitions.",
+    "label": "LESSON 15",
+    "cue": [
+      "A participant commits during submission and reveals during reveal. A verified opening publishes a rating and updates totals."
+    ],
+    "nodes": [
+      {
+        "id": "submit",
+        "title": "SUBMISSION",
+        "body": [
+          "Organizer: admit members",
+          "Participants: commit"
+        ],
+        "kind": "state",
+        "tag": "PHASE 0",
+        "box": [
+          88,
+          224,
+          288,
+          208
+        ]
+      },
+      {
+        "id": "reveal",
+        "title": "REVEAL",
+        "body": [
+          "Verify each opening;",
+          "publish rating + update totals."
+        ],
+        "kind": "state",
+        "tag": "PHASE 1",
+        "focal": true,
+        "box": [
+          496,
+          224,
+          288,
+          208
+        ]
+      },
+      {
+        "id": "closed",
+        "title": "CLOSED",
+        "body": [
+          "Round is closed."
+        ],
+        "kind": "state",
+        "tag": "PHASE 2",
+        "box": [
+          904,
+          224,
+          288,
+          208
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            376,
+            328
+          ],
+          [
+            496,
+            328
+          ]
+        ],
+        "label": "OPEN REVEAL"
+      },
+      {
+        "points": [
+          [
+            784,
+            328
+          ],
+          [
+            904,
+            328
+          ]
+        ],
+        "label": "CLOSE ROUND"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Filled dot: initial state · Ringed dot: terminal state · Arrows: permitted transitions",
+    "source_document": "Lessons/Lesson 15/Exercise/README.md",
+    "state_machine": true
+  },
+  {
+    "source": 34,
+    "slug": "lesson-16-test-the-test",
+    "title": "A useful test distinguishes correct from broken",
+    "subtitle": "Test sensitivity · run the same test against two implementations.",
+    "desc": "Test sensitivity · run the same test against two implementations.",
+    "label": "LESSON 16",
+    "cue": [
+      "Passing only the correct fixture is not enough: the intentionally broken fixture must also make the test fail."
+    ],
+    "nodes": [
+      {
+        "id": "test",
+        "title": "One test",
+        "body": [
+          "Same asserted behavior;",
+          "change the fixture under test."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          264,
+          368,
+          184
+        ]
+      },
+      {
+        "id": "correct",
+        "title": "Correct fixture",
+        "body": [
+          "The test must PASS."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          752,
+          192,
+          488,
+          160
+        ]
+      },
+      {
+        "id": "broken",
+        "title": "Broken fixture",
+        "body": [
+          "The test must FAIL."
+        ],
+        "kind": "state",
+        "box": [
+          752,
+          416,
+          488,
+          160
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            408,
+            304
+          ],
+          [
+            560,
+            304
+          ],
+          [
+            560,
+            272
+          ],
+          [
+            752,
+            272
+          ]
+        ],
+        "label": "CORRECT",
+        "at": [
+          656,
+          252
+        ]
+      },
+      {
+        "points": [
+          [
+            408,
+            408
+          ],
+          [
+            592,
+            408
+          ],
+          [
+            592,
+            496
+          ],
+          [
+            752,
+            496
+          ]
+        ],
+        "label": "BROKEN",
+        "at": [
+          668,
+          476
+        ]
+      }
+    ],
+    "height": 752,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 16/Exercise/README.md"
+  },
+  {
+    "source": 35,
+    "slug": "lesson-16-adversarial-cases",
+    "title": "Test both sides of the rule",
+    "subtitle": "Adversarial review · successful examples and rejected examples teach different things.",
+    "desc": "Adversarial review · successful examples and rejected examples teach different things.",
+    "label": "LESSON 16",
+    "cue": [
+      "For rejection cases, also check state. A thrown error alone does not describe the full expected behavior."
+    ],
+    "nodes": [
+      {
+        "id": "rule",
+        "title": "Contract rule",
+        "body": [
+          "Define the expected behavior."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          264,
+          368,
+          184
+        ]
+      },
+      {
+        "id": "valid",
+        "title": "Valid input",
+        "body": [
+          "Check the expected state",
+          "after the call."
+        ],
+        "kind": "state",
+        "box": [
+          752,
+          192,
+          488,
+          160
+        ]
+      },
+      {
+        "id": "invalid",
+        "title": "Invalid input",
+        "body": [
+          "Invalid / unauthorized / repeated",
+          "input: rejection + state checks."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          752,
+          416,
+          488,
+          160
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            408,
+            304
+          ],
+          [
+            560,
+            304
+          ],
+          [
+            560,
+            272
+          ],
+          [
+            752,
+            272
+          ]
+        ],
+        "label": "VALID",
+        "at": [
+          656,
+          252
+        ]
+      },
+      {
+        "points": [
+          [
+            408,
+            408
+          ],
+          [
+            592,
+            408
+          ],
+          [
+            592,
+            496
+          ],
+          [
+            752,
+            496
+          ]
+        ],
+        "label": "INVALID",
+        "at": [
+          668,
+          476
+        ]
+      }
+    ],
+    "height": 752,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 16/Exercise/README.md"
+  },
+  {
+    "source": 36,
+    "slug": "lesson-17-opening-recovery",
+    "title": "Recover the exact opening after a restart",
+    "subtitle": "Persistence flow · choice, secret, salt, and scope must survive together.",
+    "desc": "Persistence flow · choice, secret, salt, and scope must survive together.",
+    "label": "LESSON 17",
+    "cue": [
+      "Restoring the original bytes is essential. A new random salt is a different opening."
+    ],
+    "nodes": [
+      {
+        "id": "data",
+        "title": "Opening + scope",
+        "body": [
+          "choice + secret + salt + scope"
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "save",
+        "title": "Save once",
+        "body": [
+          "Persist the opening before",
+          "the current process ends."
+        ],
+        "kind": "store",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STORE"
+      },
+      {
+        "id": "restart",
+        "title": "New process",
+        "body": [
+          "Load the saved data",
+          "and check its scope."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "restore",
+        "title": "Restore exact bytes",
+        "body": [
+          "Recover the original opening",
+          "for the same intended use."
+        ],
+        "kind": "private",
+        "focal": true,
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / PRIVATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 17/Exercise/README.md"
+  },
+  {
+    "source": 37,
+    "slug": "lesson-17-two-sessions",
+    "title": "The notebook connects two sessions",
+    "subtitle": "Session handoff · select the matching account, network, contract, and round before restoring.",
+    "desc": "Session handoff · select the matching account, network, contract, and round before restoring.",
+    "label": "LESSON 17",
+    "cue": [
+      "The public commitment can outlive the process. The private opening must remain available for the later reveal."
+    ],
+    "nodes": [
+      {
+        "id": "a",
+        "title": "Session A",
+        "body": [
+          "choice + salt",
+          "Save the private opening."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "commit",
+        "title": "Submit commitment",
+        "body": [
+          "Keep the opening locally;",
+          "publish only the commitment."
+        ],
+        "kind": "store",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STORE"
+      },
+      {
+        "id": "scope",
+        "title": "Session B: scope",
+        "body": [
+          "After restart, select account,",
+          "network, contract, and round."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "restore",
+        "title": "Restore + reveal",
+        "body": [
+          "Load the saved opening",
+          "for that exact scope."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STEP"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 17/Exercise/README.md"
+  },
+  {
+    "source": 38,
+    "slug": "lesson-18-ui-states",
+    "title": "A click is not a confirmed result",
+    "subtitle": "UI lifecycle · show pending while the operation is unresolved.",
+    "desc": "UI lifecycle · show pending while the operation is unresolved.",
+    "label": "LESSON 18",
+    "cue": [
+      "If the operation fails, render a controlled error. Render success from public state read after confirmation."
+    ],
+    "nodes": [
+      {
+        "id": "click",
+        "title": "User clicks",
+        "body": [
+          "Start the operation."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          160
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "pending",
+        "title": "Pending",
+        "body": [
+          "Await confirmation;",
+          "handle failure explicitly."
+        ],
+        "kind": "state",
+        "box": [
+          480,
+          208,
+          320,
+          160
+        ],
+        "tag": "02 / STATE"
+      },
+      {
+        "id": "read",
+        "title": "Read + render",
+        "body": [
+          "Read confirmed public state,",
+          "then render the result."
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          920,
+          208,
+          320,
+          160
+        ],
+        "tag": "03 / STATE"
+      },
+      {
+        "id": "error",
+        "title": "Controlled error",
+        "body": [
+          "Report the failure; do not",
+          "render it as confirmed success."
+        ],
+        "kind": "terminal",
+        "tag": "FAILURE",
+        "box": [
+          480,
+          488,
+          320,
+          160
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            288
+          ],
+          [
+            480,
+            288
+          ]
+        ],
+        "label": "START"
+      },
+      {
+        "points": [
+          [
+            800,
+            288
+          ],
+          [
+            920,
+            288
+          ]
+        ],
+        "label": "CONFIRMED"
+      },
+      {
+        "points": [
+          [
+            640,
+            368
+          ],
+          [
+            640,
+            488
+          ]
+        ],
+        "label": "FAILURE",
+        "at": [
+          712,
+          428
+        ]
+      }
+    ],
+    "height": 824,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 18/Exercise/README.md"
+  },
+  {
+    "source": 39,
+    "slug": "lesson-18-ui-network",
+    "title": "Close the UI loop with public-state refresh",
+    "subtitle": "UI integration · the private notebook retains the opening locally throughout the transaction flow.",
+    "desc": "UI integration · the private notebook retains the opening locally throughout the transaction flow.",
+    "label": "LESSON 18",
+    "cue": [
+      "After confirmation, refresh public state and update the UI. The opening remains in the local private notebook."
+    ],
+    "nodes": [
+      {
+        "id": "user",
+        "title": "User + UI",
+        "body": [
+          "Start the requested action."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "providers",
+        "title": "Wallet / providers",
+        "body": [
+          "Build and submit",
+          "the transaction."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "confirm",
+        "title": "Confirmation",
+        "body": [
+          "Wait for the network result."
+        ],
+        "kind": "state",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STATE"
+      },
+      {
+        "id": "refresh",
+        "title": "Refresh public state",
+        "body": [
+          "Read back the contract state",
+          "and return it to the UI."
+        ],
+        "kind": "store",
+        "focal": true,
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            920,
+            540
+          ],
+          [
+            200,
+            540
+          ],
+          [
+            200,
+            392
+          ]
+        ],
+        "label": "REFRESH UI",
+        "at": [
+          560,
+          520
+        ],
+        "dashed": true
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Solid arrows: transaction flow · Dashed arrow: confirmed public-state refresh",
+    "source_document": "Lessons/Lesson 18/Exercise/README.md"
+  },
+  {
+    "source": 40,
+    "slug": "lesson-19-public-receipt",
+    "title": "Build public receipts from an allowlist",
+    "subtitle": "Privacy boundary · start from explicitly permitted fields, not the entire private input object.",
+    "desc": "Privacy boundary · start from explicitly permitted fields, not the entire private input object.",
+    "label": "LESSON 19",
+    "cue": [
+      "Keep secret and salt local. Even a limited public receipt can link actions through its stable ID."
+    ],
+    "nodes": [
+      {
+        "id": "input",
+        "title": "Private input object",
+        "body": [
+          "Contains secret / salt",
+          "as well as public fields."
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "allow",
+        "title": "Explicit allowlist",
+        "body": [
+          "Select only the fields",
+          "intended for public output."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "receipt",
+        "title": "Public receipt",
+        "body": [
+          "The ID can link actions;",
+          "inspect what else is exposed."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 19/Exercise/README.md"
+  },
+  {
+    "source": 41,
+    "slug": "lesson-19-review-boundaries",
+    "title": "Review evidence and observable output",
+    "subtitle": "Privacy review · inspect both the claims being checked and what an observer can connect.",
+    "desc": "Privacy review · inspect both the claims being checked and what an observer can connect.",
+    "label": "LESSON 19",
+    "cue": [
+      "Ask where trusted evidence comes from, then inspect public identity, timing, and linkage."
+    ],
+    "nodes": [
+      {
+        "id": "input",
+        "title": "Input + controller",
+        "body": [
+          "Who supplies the data?",
+          "Is there trusted evidence?"
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "checks",
+        "title": "Circuit checks",
+        "body": [
+          "Which rules are enforced",
+          "by the contract?"
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "output",
+        "title": "Public output",
+        "body": [
+          "Identity / timing / linkage:",
+          "what can an observer learn?"
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ]
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 19/Exercise/README.md"
+  },
+  {
+    "source": 42,
+    "slug": "lesson-20-auction-phases",
+    "title": "A sealed auction moves through three phases",
+    "subtitle": "Capstone state machine · reveal verifies an opening before it can affect the winner.",
+    "desc": "Capstone state machine · reveal verifies an opening before it can affect the winner.",
+    "label": "LESSON 20",
+    "cue": [
+      "The greatest valid revealed bid wins. Equal bids keep the first successfully revealed winner."
+    ],
+    "nodes": [
+      {
+        "id": "submit",
+        "title": "SUBMIT",
+        "body": [
+          "Store sealed bids."
+        ],
+        "kind": "state",
+        "tag": "PHASE 0",
+        "box": [
+          88,
+          224,
+          288,
+          208
+        ]
+      },
+      {
+        "id": "reveal",
+        "title": "REVEAL",
+        "body": [
+          "Verify openings; compare",
+          "valid bids with the leader."
+        ],
+        "kind": "state",
+        "tag": "PHASE 1",
+        "focal": true,
+        "box": [
+          496,
+          224,
+          288,
+          208
+        ]
+      },
+      {
+        "id": "closed",
+        "title": "CLOSED",
+        "body": [
+          "Freeze the result."
+        ],
+        "kind": "state",
+        "tag": "PHASE 2",
+        "box": [
+          904,
+          224,
+          288,
+          208
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            376,
+            328
+          ],
+          [
+            496,
+            328
+          ]
+        ],
+        "label": "OPEN REVEAL"
+      },
+      {
+        "points": [
+          [
+            784,
+            328
+          ],
+          [
+            904,
+            328
+          ]
+        ],
+        "label": "CLOSE"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Filled dot: initial state · Ringed dot: terminal state · Arrows: permitted transitions",
+    "source_document": "Lessons/Lesson 20/Exercise/README.md",
+    "state_machine": true
+  },
+  {
+    "source": 43,
+    "slug": "lesson-20-tie-trace",
+    "title": "A tie keeps the earlier revealed winner",
+    "subtitle": "Worked state trace · compare each newly revealed bid with the current highest bid.",
+    "desc": "Worked state trace · compare each newly revealed bid with the current highest bid.",
+    "label": "LESSON 20",
+    "cue": [
+      "Carol’s bid equals 90, so it does not replace Bob. The winner changes only for a greater valid bid."
+    ],
+    "nodes": [
+      {
+        "id": "alice",
+        "title": "Alice reveals 70",
+        "body": [
+          "highest = 70",
+          "winner = Alice"
+        ],
+        "kind": "state",
+        "box": [
+          40,
+          224,
+          320,
+          208
+        ],
+        "tag": "01 / STATE"
+      },
+      {
+        "id": "bob",
+        "title": "Bob reveals 90",
+        "body": [
+          "highest = 90",
+          "winner = Bob"
+        ],
+        "kind": "state",
+        "focal": true,
+        "box": [
+          480,
+          224,
+          320,
+          208
+        ],
+        "tag": "02 / STATE"
+      },
+      {
+        "id": "carol",
+        "title": "Carol reveals 90",
+        "body": [
+          "highest = 90",
+          "winner = Bob (unchanged)"
+        ],
+        "kind": "state",
+        "box": [
+          920,
+          224,
+          320,
+          208
+        ],
+        "tag": "03 / STATE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            328.0
+          ],
+          [
+            480,
+            328.0
+          ]
+        ],
+        "label": "90 > 70"
+      },
+      {
+        "points": [
+          [
+            800,
+            328.0
+          ],
+          [
+            920,
+            328.0
+          ]
+        ],
+        "label": "90 = 90"
+      }
+    ],
+    "height": 720,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 20/Exercise/README.md"
+  },
+  {
+    "source": 44,
+    "slug": "lesson-20-project-loop",
+    "title": "Build, demonstrate, review, improve",
+    "subtitle": "Project loop · turn a concrete problem into a specification that can be tested and explained.",
+    "desc": "Project loop · turn a concrete problem into a specification that can be tested and explained.",
+    "label": "LESSON 20",
+    "cue": [
+      "Review findings feed fixes back into the specification and implementation before the next demonstration."
+    ],
+    "nodes": [
+      {
+        "id": "problem",
+        "title": "Problem",
+        "body": [
+          "Define what needs solving."
+        ],
+        "kind": "step",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / STEP"
+      },
+      {
+        "id": "spec",
+        "title": "Specification",
+        "body": [
+          "Describe rules and outcomes."
+        ],
+        "kind": "step",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STEP"
+      },
+      {
+        "id": "impl",
+        "title": "Implementation",
+        "body": [
+          "Build the specified behavior."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "evidence",
+        "title": "Tests + deploy + demo",
+        "body": [
+          "Show the behavior working."
+        ],
+        "kind": "step",
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STEP"
+      },
+      {
+        "id": "review",
+        "title": "Review → fixes",
+        "body": [
+          "Use findings to revise",
+          "the specification and code."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          480,
+          448,
+          320,
+          184
+        ],
+        "tag": "05 / STEP"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            920,
+            540.0
+          ],
+          [
+            800,
+            540.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            640,
+            448
+          ],
+          [
+            640,
+            392
+          ]
+        ],
+        "label": "REVISE",
+        "at": [
+          704,
+          420
+        ],
+        "dashed": true
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Solid arrows: build and demonstrate · Dashed arrow: review findings return to the specification",
+    "source_document": "Lessons/Lesson 20/Exercise/README.md"
+  },
+  {
+    "source": 45,
+    "slug": "solution-20-auction-flow",
+    "title": "From private bid to public winner",
+    "subtitle": "Reference architecture · commitments bind each later revealed bid to its earlier submission.",
+    "desc": "Reference architecture · commitments bind each later revealed bid to its earlier submission.",
+    "label": "REFERENCE / 20",
+    "cue": [
+      "The secret and salt are private inputs; the verified bid and highest / winner result are public."
+    ],
+    "nodes": [
+      {
+        "id": "private",
+        "title": "Private inputs",
+        "body": [
+          "secret + bid + salt"
+        ],
+        "kind": "private",
+        "box": [
+          40,
+          208,
+          320,
+          184
+        ],
+        "tag": "01 / PRIVATE"
+      },
+      {
+        "id": "commit",
+        "title": "Scoped ID + commitment",
+        "body": [
+          "Store the sealed bid under",
+          "its contract-scoped identifier."
+        ],
+        "kind": "store",
+        "box": [
+          480,
+          208,
+          320,
+          184
+        ],
+        "tag": "02 / STORE"
+      },
+      {
+        "id": "verify",
+        "title": "Verified public bid",
+        "body": [
+          "Check the opening before",
+          "publishing its bid."
+        ],
+        "kind": "step",
+        "focal": true,
+        "box": [
+          920,
+          208,
+          320,
+          184
+        ],
+        "tag": "03 / STEP"
+      },
+      {
+        "id": "winner",
+        "title": "Highest / winner",
+        "body": [
+          "Compare the verified bid",
+          "and update the result."
+        ],
+        "kind": "store",
+        "box": [
+          920,
+          448,
+          320,
+          184
+        ],
+        "tag": "04 / STORE"
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            300.0
+          ],
+          [
+            480,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            300.0
+          ],
+          [
+            920,
+            300.0
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            1080.0,
+            392
+          ],
+          [
+            1080.0,
+            448
+          ]
+        ]
+      }
+    ],
+    "height": 872,
+    "zones": [],
+    "annotations": [],
+    "legend": "Arrows: flow / transition · Dashed border: private input · Inset rule: stored state · Blue: key idea",
+    "source_document": "Lessons/Lesson 20/Solution/DESIGN.md"
+  },
+  {
+    "slug": "course-four-environments",
+    "title": "One ratings app, four environments",
+    "subtitle": "Promote reviewed source; establish fresh evidence on each chain.",
+    "desc": "The ratings application progresses from local development to public preview, preprod rehearsal, and mainnet production with distinct wallets, addresses, and observations.",
+    "label": "Course / deployment path",
+    "height": 840,
+    "nodes": [
+      {
+        "id": "undeployed",
+        "box": [
+          40,
+          224,
+          264,
+          240
+        ],
+        "title": "Local",
+        "tag": "01 / WORKSHOP",
+        "body": [
+          "Fast logic tests, then",
+          "real local transactions.",
+          "Own node + indexer + prover."
+        ],
+        "code": "undeployed",
+        "focal": false
+      },
+      {
+        "id": "preview",
+        "box": [
+          352,
+          224,
+          264,
+          240
+        ],
+        "title": "Preview",
+        "tag": "02 / PRACTICE",
+        "body": [
+          "Shared early experiments.",
+          "Invite a second tester.",
+          "Use independent wallets."
+        ],
+        "code": "preview",
+        "focal": true
+      },
+      {
+        "id": "preprod",
+        "box": [
+          664,
+          224,
+          264,
+          240
+        ],
+        "title": "Preprod",
+        "tag": "03 / REHEARSAL",
+        "body": [
+          "Repeat the release flow.",
+          "Test recovery and hosting.",
+          "Collect confirmation evidence."
+        ],
+        "code": "preprod",
+        "focal": false
+      },
+      {
+        "id": "mainnet",
+        "box": [
+          976,
+          224,
+          264,
+          240
+        ],
+        "title": "Mainnet",
+        "tag": "04 / PRODUCTION",
+        "body": [
+          "Reviewed release.",
+          "Real fee resources.",
+          "Monitor accepted results."
+        ],
+        "code": "mainnet",
+        "focal": false
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            304,
+            344
+          ],
+          [
+            352,
+            344
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            616,
+            344
+          ],
+          [
+            664,
+            344
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            928,
+            344
+          ],
+          [
+            976,
+            344
+          ]
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "x": 40,
+        "y": 524,
+        "lines": [
+          "At each transition: rebuild matching artifacts, configure one network, fund its wallet,",
+          "deploy a fresh address, then confirm and read back. Existing chain data does not migrate."
+        ],
+        "width": 118
+      },
+      {
+        "x": 40,
+        "y": 612,
+        "lines": [
+          "A production frontend build is a file bundle. A mainnet deployment is a chain operation."
+        ],
+        "width": 118
+      }
+    ],
+    "cue": [
+      "Same ratings rules; network-specific services, wallets, addresses, and measured results."
+    ],
+    "legend": "Solid arrow: next learning stage · Blue: shared experimentation · Each stage needs its own evidence"
+  },
+  {
+    "slug": "course-share-ratings",
+    "title": "Share the app; keep separate openings",
+    "subtitle": "Two clients join one contract on the same public network.",
+    "desc": "Alice and Bob receive the same public application build and contract address, use independent wallets and local proving, and interact with one shared ratings contract.",
+    "label": "Course / shared ratings",
+    "height": 920,
+    "nodes": [
+      {
+        "id": "release",
+        "box": [
+          40,
+          224,
+          320,
+          200
+        ],
+        "title": "Public release",
+        "tag": "SHARE THESE",
+        "body": [
+          "App URL + source revision",
+          "Network + contract address",
+          "Matching compiled artifacts"
+        ]
+      },
+      {
+        "id": "alice",
+        "box": [
+          480,
+          224,
+          320,
+          200
+        ],
+        "title": "Alice’s client",
+        "tag": "OWN MACHINE",
+        "kind": "private",
+        "body": [
+          "Own wallet and opening",
+          "Local or wallet proving",
+          "Commit 3; reveal 3"
+        ]
+      },
+      {
+        "id": "bob",
+        "box": [
+          480,
+          536,
+          320,
+          200
+        ],
+        "title": "Bob’s client",
+        "tag": "OWN MACHINE",
+        "kind": "private",
+        "body": [
+          "Own wallet and opening",
+          "Local or wallet proving",
+          "Commit 5; reveal 5"
+        ]
+      },
+      {
+        "id": "contract",
+        "box": [
+          920,
+          380,
+          320,
+          232
+        ],
+        "title": "Shared ratings",
+        "tag": "SAME NETWORK + ADDRESS",
+        "kind": "store",
+        "focal": true,
+        "body": [
+          "Checks both participants.",
+          "Stores sealed records.",
+          "Reveals accepted ratings.",
+          "Indexer supplies read-back."
+        ]
+      }
+    ],
+    "arrows": [
+      {
+        "points": [
+          [
+            360,
+            292
+          ],
+          [
+            480,
+            292
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            200,
+            424
+          ],
+          [
+            200,
+            636
+          ],
+          [
+            480,
+            636
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            324
+          ],
+          [
+            860,
+            324
+          ],
+          [
+            860,
+            440
+          ],
+          [
+            920,
+            440
+          ]
+        ]
+      },
+      {
+        "points": [
+          [
+            800,
+            636
+          ],
+          [
+            880,
+            636
+          ],
+          [
+            880,
+            552
+          ],
+          [
+            920,
+            552
+          ]
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "x": 40,
+        "y": 688,
+        "lines": [
+          "Never include seeds, salts,",
+          "passwords, or access tokens",
+          "in the public invitation."
+        ],
+        "width": 35
+      }
+    ],
+    "cue": [
+      "Different wallets + one address = shared state. Different addresses = separate applications."
+    ],
+    "legend": "Solid arrow: distribution or transaction path · Dashed border: participant-held data · Blue: shared public contract"
+  },
+  {
+    "source": 52,
+    "slug": "lesson-22-agentic-loop",
+    "title": "Agentic Midnight development is an evidence loop",
+    "subtitle": "Each pass improves both the application and the context future agents receive.",
+    "desc": "A seven-stage development loop moves from a product slice through scaffolding, grounding, editing, verification, evidence capture, and context improvement, while every stage writes to a shared evidence record.",
+    "label": "LESSON 22",
+    "cue": [
+      "The agent’s answer is an input. The exit condition is reviewed, reproducible evidence."
+    ],
+    "height": 848,
+    "loop": {
+      "center": [
+        640,
+        432
+      ],
+      "radius": 240,
+      "station_size": [
+        184,
+        72
+      ],
+      "hub_size": [
+        224,
+        112
+      ],
+      "hub": {
+        "title": "Evidence record",
+        "subtitle": "observations · limits · friction"
+      },
+      "stations": [
+        {
+          "title": "Frame",
+          "subtitle": "one private slice"
+        },
+        {
+          "title": "Scaffold",
+          "subtitle": "create-mn-app"
+        },
+        {
+          "title": "Ground",
+          "subtitle": "spec + source + versions"
+        },
+        {
+          "title": "Change",
+          "subtitle": "small bounded diff"
+        },
+        {
+          "title": "Verify",
+          "subtitle": "compile + adversarial tests",
+          "focal": true
+        },
+        {
+          "title": "Record",
+          "subtitle": "observed vs inferred"
+        },
+        {
+          "title": "Improve",
+          "subtitle": "context + tools + docs"
+        }
+      ]
+    },
+    "nodes": [],
+    "arrows": [],
+    "zones": [],
+    "annotations": [],
+    "legend": "Solid ring: work advances · Dashed spokes: evidence writes back · Blue: verification gate"
+  }
+]

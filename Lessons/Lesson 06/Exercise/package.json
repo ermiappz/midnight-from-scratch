@@ -1,0 +1,12 @@
+{
+  "name": "midnight-from-scratch",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@midnight-ntwrk/compact-runtime": "0.16.0"
+  },
+  "scripts": {
+    "start": "node run.js",
+    "compile-compact": "compact compile +0.31.1 --skip-zk hello.compact managed/hello"
+  }
+}

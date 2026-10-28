@@ -1,0 +1,53 @@
+// Select the source language supported by compiler 0.31.1.
+pragma language_version 0.23;
+// Make the compiler's built-in ledger and cryptographic operations available.
+import CompactStandardLibrary;
+
+// Store the message publicly so the JS runner can inspect accepted state.
+export ledger message: Opaque<"string">;
+// Count successful message calls independently of the text they contain.
+export ledger edits: Counter;
+
+// Expose one operation that accepts a message and returns no application value.
+export circuit storeMessage(newMessage: Opaque<"string">): [] {
+    // Explicitly allow the private argument to become a public ledger value.
+    message = disclose(newMessage);
+    // Count this successful call, including repeated identical messages.
+    edits.increment(1);
+}
+
+// Reserve a public rating; the initial zero means not rated yet.
+export ledger rating: Uint<8>;
+
+// Accept a private numeric argument through a separate entry point.
+export circuit setRating(newRating: Uint<8>): [] {
+    // Reject values that fit the type but violate the application's 1–5 rule.
+    assert(newRating >= 1 && newRating <= 5, "Rating must be 1 to 5");
+    // Publish the rating only after its application rule succeeds.
+    rating = disclose(newRating);
+}
+
+// Read public state without assigning to any ledger field.
+export circuit readRating(): Uint<8> {
+    // Return the existing public value as the application's answer.
+    return rating;
+}
+
+// Return a Boolean answer for the stored rating without changing it.
+export circuit isFiveStars(): Boolean {
+    // Compare instead of assigning so this remains a read-only operation.
+    return rating == 5;
+}
+
+// Declare a callback whose JavaScript implementation supplies the local preference.
+witness preferredRating(): Uint<8>;
+
+// Ask the callback for its value rather than taking a rating argument.
+export circuit applyPreferredRating(): [] {
+    // Treat the witness result as caller-controlled input.
+    const choice = preferredRating();
+    // Enforce the rule in the circuit even if the caller replaces its JS callback.
+    assert(choice >= 1 && choice <= 5, "Rating must be 1 to 5");
+    // Deliberately publish the validated preference in this example.
+    rating = disclose(choice);
+}

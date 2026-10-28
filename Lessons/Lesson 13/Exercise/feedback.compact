@@ -1,0 +1,76 @@
+// Pin the language understood by the course's compiler version.
+pragma language_version 0.23;
+// Use the compiler's standard library without adding an npm dependency.
+import CompactStandardLibrary;
+
+// Define the fields grouped into one participant record.
+export struct Submission {
+    // Retain the public commitment that binds this record to its private opening.
+    commitment: Bytes<32>;
+    // Track whether this record has already been opened.
+    revealed: Boolean;
+    // Store the placeholder or the deliberately disclosed rating for this record.
+    value: Uint<8>;
+}
+
+// Keep a separate public map entry for each identifier.
+export ledger submissions: Map<Bytes<32>, Submission>;
+
+// Derive the record identifier from the private authorization secret.
+circuit keyFor(secret: Bytes<32>): Bytes<32> {
+    // Compute a deterministic identifier without revealing the underlying secret.
+    return persistentHash<Vector<3, Bytes<32>>>([
+        // Bind this identifier to the application purpose, contract instance and private secret.
+        pad(32, "feedback:user:v1"), kernel.self().bytes, secret
+    ]);
+}
+
+// Let the caller obtain the public identifier using the contract's own derivation.
+export circuit participantId(secret: Bytes<32>): Bytes<32> {
+    // Return the public identifier while keeping its secret input private.
+    return disclose(keyFor(secret));
+}
+
+// Create one hidden submission for the owner derived from this secret.
+export circuit commitFor(secret: Bytes<32>, choice: Uint<8>, salt: Bytes<32>): [] {
+    // Permit this value to become public at this deliberate disclosure point.
+    const owner = disclose(keyFor(secret));
+    // Prevent replacing a commitment after a participant has submitted.
+    assert(!submissions.member(owner), "Already submitted");
+    // Reject values that fit the numeric type but violate the application rule.
+    assert(choice >= 1 && choice <= 5, "Rating must be 1 to 5");
+    // Write the validated record to the public map under this identifier.
+    submissions.insert(owner, Submission {
+        // Retain the public commitment that binds this record to its private opening.
+        commitment: persistentCommit<Uint<8>>(choice, salt),
+        // Track whether this record has already been opened.
+        revealed: false,
+        // Store the placeholder or the deliberately disclosed rating for this record.
+        value: 0
+    });
+}
+
+// Require both record ownership and a matching opening before publishing a rating.
+export circuit revealFor(owner: Bytes<32>, secret: Bytes<32>, choice: Uint<8>, salt: Bytes<32>): [] {
+    // Reject callers who do not know the secret corresponding to this record ID.
+    assert(owner == keyFor(secret), "Not the owner");
+    // Permit this value to become public at this deliberate disclosure point.
+    const publicOwner = disclose(owner);
+    // Check existence before reading a map entry that may be absent.
+    assert(submissions.member(publicOwner), "No submission");
+    // Read the existing record only after its existence has been checked.
+    const previous = submissions.lookup(publicOwner);
+    // Prevent repeated reveals from reusing the same submission.
+    assert(!previous.revealed, "Already revealed");
+    // Bind the reveal to the original choice and salt, rather than trusting the caller.
+    assert(previous.commitment == persistentCommit<Uint<8>>(choice, salt), "Wrong opening");
+    // Write the validated record to the public map under this identifier.
+    submissions.insert(publicOwner, Submission {
+        // Retain the public commitment that binds this record to its private opening.
+        commitment: previous.commitment,
+        // Track whether this record has already been opened.
+        revealed: true,
+        // Store the placeholder or the deliberately disclosed rating for this record.
+        value: disclose(choice)
+    });
+}

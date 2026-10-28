@@ -1,0 +1,8 @@
+// Select the course language before adding the capstone declarations.
+pragma language_version 0.23;
+// Import maps, counters, commitments and hashes.
+import CompactStandardLibrary;
+
+// TODO 20A: Add Bid, the public fields, constructor, scoped ID and commitBid.
+// TODO 20B: Add organizer-authorized startReveal and close transitions.
+// TODO 20C: Verify openings, prevent replay, and maintain the highest revealed bid.

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "product": {
+    "name": null,
+    "user": null,
+    "problem": null,
+    "firstSlice": null,
+    "privateData": [],
+    "publicData": []
+  },
+  "scaffold": {
+    "tool": null,
+    "command": null,
+    "setupCommand": null,
+    "initialNetwork": null,
+    "source": null
+  },
+  "agent": {
+    "expert": null,
+    "doctorCommand": null,
+    "contextFiles": [],
+    "editablePaths": [],
+    "forbiddenPromptData": [],
+    "prompt": null
+  },
+  "verification": {
+    "commands": [],
+    "cases": [],
+    "evidencePolicy": {
+      "separateObservedFromInferred": null,
+      "networkClaimsNeedReadBack": null,
+      "securityNeedsHumanReview": null
+    }
+  },
+  "feedback": {
+    "observations": [],
+    "metrics": {
+      "taskSuccess": null,
+      "compactCompile": null,
+      "testsPassed": null,
+      "unsupportedClaims": null
+    },
+    "humanReview": null
+  }
+}

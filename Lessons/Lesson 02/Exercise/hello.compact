@@ -1,0 +1,6 @@
+// Select the language supported by the course compiler.
+pragma language_version 0.23;
+// Make standard ledger types and operations available.
+import CompactStandardLibrary;
+
+// TODO: Follow lesson 2 to declare message and implement storeMessage.

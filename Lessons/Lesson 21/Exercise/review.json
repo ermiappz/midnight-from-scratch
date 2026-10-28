@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "feature": {
+    "goal": null,
+    "ratingMin": null,
+    "ratingMax": null,
+    "publicAtCommit": [],
+    "publicAtReveal": [],
+    "private": []
+  },
+  "request": {
+    "compiler": null,
+    "language": null,
+    "runtime": null,
+    "sdk": null,
+    "target": null,
+    "expertSkills": [],
+    "prompt": null,
+    "sourceFiles": []
+  },
+  "verification": {
+    "cases": [
+      {
+        "id": "valid-opening",
+        "expected": "",
+        "evidenceStatus": "not-run",
+        "evidence": ""
+      },
+      {
+        "id": "wrong-rating",
+        "expected": "",
+        "evidenceStatus": "not-run",
+        "evidence": ""
+      },
+      {
+        "id": "wrong-salt",
+        "expected": "",
+        "evidenceStatus": "not-run",
+        "evidence": ""
+      },
+      {
+        "id": "unauthorized-owner",
+        "expected": "",
+        "evidenceStatus": "not-run",
+        "evidence": ""
+      },
+      {
+        "id": "replay",
+        "expected": "",
+        "evidenceStatus": "not-run",
+        "evidence": ""
+      },
+      {
+        "id": "phase",
+        "expected": "",
+        "evidenceStatus": "not-run",
+        "evidence": ""
+      },
+      {
+        "id": "unchanged-state",
+        "expected": "",
+        "evidenceStatus": "not-run",
+        "evidence": ""
+      }
+    ],
+    "privacy": {
+      "noSecretInPublicReceipt": null,
+      "stableIdCanLinkActions": null,
+      "localTestsProveNetworkDeployment": null
+    },
+    "limitations": null,
+    "humanReview": null
+  }
+}

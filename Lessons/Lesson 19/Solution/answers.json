@@ -1,0 +1,13 @@
+{
+  "19A": {
+    "commitment": "public",
+    "participantId": "public",
+    "salt": "private",
+    "revealedRating": "public"
+  },
+  "19C": {
+    "anonymousGuaranteed": false,
+    "dustHidesPublishedFields": false,
+    "linkedWithinContract": true
+  }
+}

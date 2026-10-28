@@ -1,0 +1,13 @@
+{
+  "19A": {
+    "commitment": null,
+    "participantId": null,
+    "salt": null,
+    "revealedRating": null
+  },
+  "19C": {
+    "anonymousGuaranteed": null,
+    "dustHidesPublishedFields": null,
+    "linkedWithinContract": null
+  }
+}

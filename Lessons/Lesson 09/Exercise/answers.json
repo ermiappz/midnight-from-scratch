@@ -1,0 +1,11 @@
+{
+  "9A": {
+    "opening": null,
+    "saltPublic": null
+  },
+  "9E": {
+    "beforeReveal": null,
+    "afterReveal": null,
+    "newSaltRecovers": null
+  }
+}

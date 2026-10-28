@@ -1,0 +1,15 @@
+// Select the source language supported by compiler 0.31.1.
+pragma language_version 0.23;
+// Make the compiler's built-in ledger and cryptographic operations available.
+import CompactStandardLibrary;
+
+// Store the message publicly so the JS runner can inspect accepted state.
+export ledger message: Opaque<"string">;
+
+// Expose one operation that accepts a message and returns no application value.
+export circuit storeMessage(newMessage: Opaque<"string">): [] {
+    // Explicitly allow the private argument to become a public ledger value.
+    message = disclose(newMessage);
+}
+
+// TODO: Add this lesson's declarations and circuits in the guide's stage order.
